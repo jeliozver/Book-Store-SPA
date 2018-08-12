@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://use.fontawesome.com/releases/v5.1.0/css/all.css');
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  background-color: #1D211E;
+  color: #FFF;
+  text-align: center;
+}
+
+/* Forms Start */
+
+.form {
+  position: relative;
+  width: 470px;
+  margin: 65px auto;
+  padding: 50px 60px 70px 60px;
+  background-color: #D5C395;
+  border-radius: 15px;
+}
+
+.form h1 {
+  color: #927057;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 40px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.username, .email, .pass {
+  outline: none;
+  border: none;
+  width: 85%;
+  padding: 10px 10px 10px 60px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  background: #EFE1C4;
+  color: #927057;
+  font-size: 1.1em;
+}
+
+.submit {
+  outline: none;
+  border: none;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #927057;
+  color: #D5C395;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.submit:hover {
+  cursor: pointer;
+  color: #FAE7B0;
+  box-shadow: 0 0 3px #FFF;
+}
+
+.form-field {
+  position: relative;
+}
+
+.fa-user, .fa-envelope, .fa-unlock-alt {
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  color: #927057;
+  font-size: 30px;
+}
+
+.fa-unlock-alt {
+  top: 6px;
+}
+
+.input-error {
+  background-color: #C3002F;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  margin-top: -30px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Forms End */

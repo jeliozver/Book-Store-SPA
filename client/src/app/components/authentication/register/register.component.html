@@ -1,0 +1,46 @@
+<div class="form register-form">
+  <form #formDir="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h1>Register Here</h1>
+    <div class="form-field">
+      <input type="text" class="username" name="username" placeholder="Username" formControlName="username" />
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="input-error">
+        <div *ngIf="username.errors.required">
+          Username is required
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <input type="text" class="email" name="email" placeholder="Email" formControlName="email" />
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="input-error">
+        <div *ngIf="email.errors.required">
+          Email is required
+        </div>
+        <div *ngIf="email.errors.pattern">
+          Please provide a valid email address
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <input type="password" class="pass" name="password" placeholder="***" formControlName="password" />
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="input-error">
+        <div *ngIf="password.errors.required">
+          Password is required
+        </div>
+        <div *ngIf="password.errors.minlength || password.errors.maxlength">
+          Password must be between 3 and 16 symbols
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <input type="password" class="pass" name="confirmPassword" placeholder="***" formControlName="confirmPassword" />
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <div *ngIf="registerForm.errors?.mustMatch && (registerForm.touched || registerForm.dirty)" class="input-error">
+        Both passwords must match
+      </div>
+    </div>
+    <input type="submit" class="submit" value="Register" [disabled]="registerForm.invalid" />
+  </form>
+</div>

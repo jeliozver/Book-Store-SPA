@@ -1,0 +1,27 @@
+<div class="form login-form">
+  <form #formDir="ngForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h1>Login Here</h1>
+    <div class="form-field">
+      <input type="text" class="username" name="username" placeholder="Username" formControlName="username" />
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="input-error">
+        <div *ngIf="username.errors.required">
+          Username is required
+        </div>
+      </div>
+    </div>
+    <div class="form-field">
+      <input type="password" class="pass" name="password" placeholder="***" formControlName="password" />
+      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="input-error">
+        <div *ngIf="password.errors.required">
+          Password is required
+        </div>
+        <div *ngIf="password.errors.minlength || password.errors.maxlength">
+          Password must be between 3 and 16 symbols
+        </div>
+      </div>
+    </div>
+    <input type="submit" class="submit" value="Login" [disabled]="loginForm.invalid" />
+  </form>
+</div>
