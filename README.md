@@ -24,7 +24,7 @@ The goal of this project is to show the core concepts of building SPA with Expre
 * Interceptors for attaching JWT token to the request headers, showing notifications from the server response and error handling
 * Custom directives
 * TypeScript models
-* Reactive forms for handling user input
+* Reactive Forms for handling user input
 
 ### Installation
 
