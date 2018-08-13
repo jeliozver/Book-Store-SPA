@@ -1,4 +1,5 @@
 const USER_CONTROLLER = require('../controllers/user');
+const BOOK_CONTROLLER = require('../controllers/book');
 const ERROR_CONTROLLER = require('../controllers/error');
 const AUTH = require('./auth');
 

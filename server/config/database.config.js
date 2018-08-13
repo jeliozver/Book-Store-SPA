@@ -18,8 +18,10 @@ module.exports = (config) => {
     // Seed Imports
     require('../models/User');
     require('../models/Role').init();
-    
+    require('../models/Book').init();
+
     // Normal Imports
     // require('../models/User');
     // require('../models/Role');
+    // require('../models/Book');
 };
