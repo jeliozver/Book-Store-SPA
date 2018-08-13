@@ -8,6 +8,9 @@ import { mustMatchValidator } from '../../../core/shared/must-match.directive';
 // Router
 import { Router } from '@angular/router';
 
+// RXJS
+import { Subscription } from 'rxjs';
+
 // Services
 import { AuthenticationService } from '../../../core/services/authentication.service';
 
@@ -20,7 +23,7 @@ const emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
-  registerSub$;
+  registerSub$: Subscription;
 
   constructor(
     private authenticationService: AuthenticationService,

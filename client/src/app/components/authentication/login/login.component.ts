@@ -7,6 +7,9 @@ import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/fo
 // Router
 import { Router } from '@angular/router';
 
+// RXJS
+import { Subscription } from 'rxjs';
+
 // Services
 import { AuthenticationService } from '../../../core/services/authentication.service';
 
@@ -17,7 +20,7 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
-  loginSub$;
+  loginSub$: Subscription;
 
   constructor(
     private authenticationService: AuthenticationService,
