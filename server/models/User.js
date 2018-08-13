@@ -12,7 +12,9 @@ const USER_SCHEMA = MONGOOSE.Schema({
     salt: { type: STRING, required: true },
     isAdmin: { type: BOOLEAN, default: false },
     roles: [{ type: OBJECT_ID, ref: 'Role' }],
-    fantasyTeam: { type: OBJECT_ID, ref: 'FantasyTeam' }
+    cart: { type: OBJECT_ID, ref: 'Cart' },
+    purchasedBooks: [{ type: OBJECT_ID, ref: 'Book' }],
+    favoriteBooks: [{ type: OBJECT_ID, ref: 'Book' }]
 });
 
 USER_SCHEMA.method({
