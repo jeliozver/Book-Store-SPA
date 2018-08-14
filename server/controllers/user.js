@@ -100,5 +100,17 @@ module.exports = {
                 data: token
             });
         })(req, res);
+    },
+
+    getProfile: (req, res) => {
+        // TODO
+    },
+
+    blockComments: (req, res) => {
+        // TODO
+    },
+
+    unblockComments: (req, res) => {
+        // TODO
     }
 };
