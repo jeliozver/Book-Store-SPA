@@ -11,6 +11,7 @@ const USER_SCHEMA = MONGOOSE.Schema({
     password: { type: STRING, required: true },
     salt: { type: STRING, required: true },
     isAdmin: { type: BOOLEAN, default: false },
+    isCommentsBlocked: { type: BOOLEAN, default: false },
     roles: [{ type: OBJECT_ID, ref: 'Role' }],
     cart: { type: OBJECT_ID, ref: 'Cart' },
     purchasedBooks: [{ type: OBJECT_ID, ref: 'Book' }],
