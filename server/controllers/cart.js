@@ -2,6 +2,19 @@ const CART = require('mongoose').model('Cart');
 const USER = require('mongoose').model('User');
 
 module.exports = {
-    // TODO
-    // Add functions
+    getCart: (req, res) => {
+        // TODO
+    },
+
+    addToCart: (req, res) => {
+        // TODO
+    },
+
+    removeFromCart: (req, res) => {
+        // TODO
+    },
+
+    checkout: (req, res) => {
+        // TODO
+    },
 };

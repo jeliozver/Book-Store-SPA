@@ -1,5 +1,6 @@
 const VALIDATOR = require('validator');
 const PASSPORT = require('passport');
+const USER = require('mongoose').model('User');
 
 function validateRegisterForm(payload) {
     let errors = {};
