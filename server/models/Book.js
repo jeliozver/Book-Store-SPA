@@ -2,6 +2,7 @@ const MONGOOSE = require('mongoose');
 
 const STRING = MONGOOSE.Schema.Types.String;
 const NUMBER = MONGOOSE.Schema.Types.Number;
+const OBJECT_ID = MONGOOSE.Schema.Types.ObjectId;
 
 const BOOK_SCHEMA = MONGOOSE.Schema({
     title: { type: STRING, required: true },
@@ -15,7 +16,8 @@ const BOOK_SCHEMA = MONGOOSE.Schema({
     price: { type: NUMBER, required: true },
     rating: { type: NUMBER, default: 0 },
     ratedCount: { type: NUMBER, default: 0 },
-    purchaseCount: { type: NUMBER, default: 0 }
+    purchasesCount: { type: NUMBER, default: 0 },
+    comments: [{ type: OBJECT_ID, ref: 'Comment' }]
 });
 
 const BOOK = MONGOOSE.model('Book', BOOK_SCHEMA);
