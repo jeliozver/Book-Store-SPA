@@ -1,6 +1,7 @@
 const MONGOOSE = require('mongoose');
 
 const STRING = MONGOOSE.Schema.Types.String;
+const DATE = MONGOOSE.Schema.Types.Date;
 const NUMBER = MONGOOSE.Schema.Types.Number;
 const OBJECT_ID = MONGOOSE.Schema.Types.ObjectId;
 
@@ -14,6 +15,7 @@ const BOOK_SCHEMA = MONGOOSE.Schema({
     publisher: { type: STRING, required: true },
     pagesCount: { type: STRING, required: true },
     price: { type: NUMBER, required: true },
+    creationDate: { type: DATE, default: Date.now },
     rating: { type: NUMBER, default: 0 },
     ratedCount: { type: NUMBER, default: 0 },
     purchasesCount: { type: NUMBER, default: 0 },
