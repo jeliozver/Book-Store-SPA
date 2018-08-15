@@ -18,15 +18,15 @@ module.exports = {
         // TODO
     },
 
-    search: (req, res) => {
-        // TODO
-    },
-
     rate: (req, res) => {
         // TODO
     },
 
     addToFavorites: (req, res) => {
         // TODO
-    }
+    },
+
+    search: (req, res) => {
+        // TODO
+    },
 };
