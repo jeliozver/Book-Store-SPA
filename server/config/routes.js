@@ -9,8 +9,8 @@ module.exports = (APP) => {
     APP.post('/user/register', USER_CONTROLLER.register);
     APP.post('/user/login', USER_CONTROLLER.login);
     APP.get('/user/profile/:username', AUTH.isAuth, USER_CONTROLLER.getProfile);
-    APP.post('/user/blockComments/:username', AUTH.isInRole('Admin'), USER_CONTROLLER.blockComments);
-    APP.post('/user/unlockComments/:username', AUTH.isInRole('Admin'), USER_CONTROLLER.unblockComments);
+    APP.post('/user/blockComments/:userId', AUTH.isInRole('Admin'), USER_CONTROLLER.blockComments);
+    APP.post('/user/unlockComments/:userId', AUTH.isInRole('Admin'), USER_CONTROLLER.unblockComments);
 
     APP.get('/user/cart', AUTH.isAuth, CART_CONTROLLER.getCart);
     APP.post('/user/cart/add/:bookId', AUTH.isAuth, CART_CONTROLLER.addToCart);
