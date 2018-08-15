@@ -26,6 +26,13 @@ function validateRegisterForm(payload) {
         errors.name = 'Please provide your name.';
     }
 
+    if (payload.avatar) {
+        if (!VALIDATOR.isURL(payload.avatar)) {
+            isFormValid = false;
+            errors.avatar = 'Please provide a valid link to your avatar image';
+        }
+    }
+
     return {
         success: isFormValid,
         errors
@@ -104,14 +111,83 @@ module.exports = {
     },
 
     getProfile: (req, res) => {
-        // TODO
+        let username = req.params.username;
+
+        USER.findOne({ username: username })
+            .populate('favoriteBooks')
+            .then((user) => {
+                if (!user) {
+                    return res.status(400).json({
+                        message: `User ${username} not found in our database`
+                    });
+                }
+
+                let userToSend = {
+                    username: user.username,
+                    avatar: user.avatar,
+                    id: user.id,
+                    commentsCount: user.commentsCount,
+                    favoriteBooks: user.favoriteBooks,
+                };
+
+                return res.status(200).json({
+                    message: 'User profile retreived successfully',
+                    data: userToSend
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                return res.status(400).json({
+                    message: 'Something went wrong, please try again.'
+                });
+            });
     },
 
     blockComments: (req, res) => {
-        // TODO
+        let userId = req.params.userId;
+
+        USER.findById(userId).then((user) => {
+            if (!user) {
+                return res.status(400).json({
+                    message: `User ${user.username} not found in our database`
+                });
+            }
+
+            user.isCommentsBlocked = true;
+            user.save();
+
+            res.status(200).json({
+                message: `User ${user.username} blocked from posting comments!`
+            });
+        }).catch((err) => {
+            console.log(err);
+            return res.status(400).json({
+                message: 'Something went wrong, please try again.'
+            });
+        });
     },
 
     unblockComments: (req, res) => {
-        // TODO
+        let userId = req.params.userId;
+
+        USER.findById(userId).then((user) => {
+            if (!user) {
+                return res.status(400).json({
+                    message: `User ${user.username} not found in our database`
+                });
+            }
+
+            user.isCommentsBlocked = false;
+            user.save();
+
+            res.status(200).json({
+                message: `User ${user.username} can post comments again!`
+            });
+        }).catch((err) => {
+            console.log(err);
+            return res.status(400).json({
+                message: 'Something went wrong, please try again.'
+            });
+        });
     }
 };
