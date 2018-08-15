@@ -13,10 +13,11 @@ const BOOK_SCHEMA = MONGOOSE.Schema({
     cover: { type: STRING, required: true },
     isbn: { type: STRING, required: true },
     publisher: { type: STRING, required: true },
-    pagesCount: { type: STRING, required: true },
+    pagesCount: { type: NUMBER, required: true },
     price: { type: NUMBER, required: true },
     creationDate: { type: DATE, default: Date.now },
-    rating: { type: NUMBER, default: 0 },
+    currentRating: { type: NUMBER, default: 0 },
+    ratingPoints: { type: NUMBER, default: 0 },
     ratedCount: { type: NUMBER, default: 0 },
     purchasesCount: { type: NUMBER, default: 0 },
     comments: [{ type: OBJECT_ID, ref: 'Comment' }]
