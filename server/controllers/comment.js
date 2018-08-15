@@ -61,6 +61,9 @@ module.exports = {
                     book.comments.push(newComment._id);
                     newComment.book = book._id;
                     newComment.user = userId;
+                    user.commentsCount += 1;
+
+                    user.save();
                     book.save();
                     newComment.save();
 
@@ -145,8 +148,12 @@ module.exports = {
 
             COMMENT.findByIdAndRemove(comment._id).then(() => {
                 BOOK.update({ _id: comment.book }, { $pull: { comment: comment._id } }).then(() => {
-                    return res.status(200).json({
-                        message: 'Comment deleted successfully!'
+                    USER.findById(req.user.id).then((user) => {
+                        user.commentsCount -= 1;
+                        user.save();
+                        return res.status(200).json({
+                            message: 'Comment deleted successfully!'
+                        });
                     });
                 });
             });

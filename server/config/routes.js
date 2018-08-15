@@ -8,7 +8,7 @@ const AUTH = require('./auth');
 module.exports = (APP) => {
     APP.post('/user/register', USER_CONTROLLER.register);
     APP.post('/user/login', USER_CONTROLLER.login);
-    APP.get('/user/profile/:username', USER_CONTROLLER.getProfile);
+    APP.get('/user/profile/:username', AUTH.isAuth, USER_CONTROLLER.getProfile);
     APP.post('/user/blockComments/:username', AUTH.isInRole('Admin'), USER_CONTROLLER.blockComments);
     APP.post('/user/unlockComments/:username', AUTH.isInRole('Admin'), USER_CONTROLLER.unblockComments);
 
