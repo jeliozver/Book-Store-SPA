@@ -11,7 +11,7 @@ module.exports = (APP) => {
     APP.get('/user/profile/:username', USER_CONTROLLER.getProfile);
     APP.post('/user/blockComments/:username', AUTH.isInRole('Admin'), USER_CONTROLLER.blockComments);
     APP.post('/user/unlockComments/:username', AUTH.isInRole('Admin'), USER_CONTROLLER.unblockComments);
-    
+
     APP.get('/user/cart', AUTH.isAuth, CART_CONTROLLER.getCart);
     APP.post('/user/cart/add/:bookId', AUTH.isAuth, CART_CONTROLLER.addToCart);
     APP.delete('/user/cart/delete/:bookId', AUTH.isAuth, CART_CONTROLLER.removeFromCart);
