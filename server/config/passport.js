@@ -4,6 +4,7 @@ const LOCAL_STRATEGY = require('passport-local').Strategy;
 const ENCRYPTION = require('../utilities/encryption');
 const ROLE = require('mongoose').model('Role');
 const USER = require('mongoose').model('User');
+const CART = require('mongoose').model('Cart');
 
 const SECRET = '5b362e2a094b97392c3d7bba';
 
@@ -48,7 +49,11 @@ module.exports = {
 
                     let token = generateToken(newUser);
 
-                    return done(null, token);
+                    CART.create({ user: newUser._id }).then((cart) => {
+                        newUser.cart = cart._id;
+                        newUser.save();
+                        return done(null, token);
+                    });
                 }).catch(() => {
                     return done(null, false);
                 });

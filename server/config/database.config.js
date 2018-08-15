@@ -16,16 +16,16 @@ module.exports = (config) => {
     });
 
     // Seed Imports
+    require('../models/Cart');
     require('../models/User');
     require('../models/Role').init();
     require('../models/Book').init();
     require('../models/Comment');
-    require('../models/Cart');
 
     // Normal Imports
+    // require('../models/Cart');
     // require('../models/User');
     // require('../models/Role');
     // require('../models/Book');
     // require('../models/Comment');
-    // require('../models/Cart');
 };
