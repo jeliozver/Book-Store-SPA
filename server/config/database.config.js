@@ -19,6 +19,7 @@ module.exports = (config) => {
     require('../models/Cart');
     require('../models/User');
     require('../models/Role').init();
+    require('../models/Receipt');
     require('../models/Book').init();
     require('../models/Comment');
 
@@ -26,6 +27,7 @@ module.exports = (config) => {
     // require('../models/Cart');
     // require('../models/User');
     // require('../models/Role');
+    // require('../models/Receipt');
     // require('../models/Book');
     // require('../models/Comment');
 };

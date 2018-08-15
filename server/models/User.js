@@ -14,7 +14,7 @@ const USER_SCHEMA = MONGOOSE.Schema({
     isCommentsBlocked: { type: BOOLEAN, default: false },
     roles: [{ type: OBJECT_ID, ref: 'Role' }],
     cart: { type: OBJECT_ID, ref: 'Cart' },
-    purchasedBooks: [{ type: OBJECT_ID, ref: 'Book' }],
+    receipts: [{ type: OBJECT_ID, ref: 'Receipt' }],
     favoriteBooks: [{ type: OBJECT_ID, ref: 'Book' }]
 });
 
