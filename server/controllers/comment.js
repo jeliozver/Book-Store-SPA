@@ -22,7 +22,7 @@ module.exports = {
         let bookId = req.params.bookId;
 
         COMMENT.find({ book: bookId }).then((comments) => {
-            res.status(200).json({
+            return res.status(200).json({
                 message: 'Comments retreived successfully!',
                 data: comments
             });
