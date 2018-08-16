@@ -1,6 +1,9 @@
 // Decorators
 import { Injectable } from '@angular/core';
 
+// RXJS
+import { Subject } from 'rxjs';
+
 // JWT Decoding
 import decode from 'jwt-decode';
 
@@ -8,6 +11,7 @@ import decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class HelperService {
+  isUserLogged = new Subject<boolean>();
 
   saveSession(token): void {
     localStorage.setItem('token', token);

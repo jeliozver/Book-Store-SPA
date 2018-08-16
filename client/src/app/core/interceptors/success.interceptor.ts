@@ -38,6 +38,7 @@ export class SuccessInterceptor implements HttpInterceptor {
             if (event instanceof HttpResponse && request.url.endsWith('login') ||
               event instanceof HttpResponse && request.url.endsWith('register')) {
               this.helperService.saveSession(event.body.data);
+              this.helperService.isUserLogged.next(true);
             }
           }
         )

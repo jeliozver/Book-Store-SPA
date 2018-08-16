@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Services
 import { HelperService } from '../../../core/services/helper.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -10,6 +11,7 @@ import { HelperService } from '../../../core/services/helper.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit, OnDestroy {
+  isLoggedSub$: Subscription;
   username: string;
   isLogged: boolean;
   statusChecker: number;
@@ -18,10 +20,17 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.statusChecker = window.setInterval(() => this.tick(), 600000);
+    this.isLoggedSub$ = this.helperService
+      .isUserLogged
+      .subscribe((data) => {
+        this.isLogged = data;
+      });
+    this.isLogged = this.helperService.isLoggedIn();
   }
 
   ngOnDestroy(): void {
     window.clearInterval(this.statusChecker);
+    this.isLoggedSub$.unsubscribe();
   }
 
   tick(): void {
@@ -29,10 +38,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   isUserLogged(): boolean {
-    if (!this.isLogged) {
-      this.isLogged = this.helperService.isLoggedIn();
-    }
-
     return this.isLogged;
   }
 
@@ -44,6 +49,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.helperService.clearSession();
-    this.isLogged = false;
+    this.helperService.isUserLogged.next(false);
   }
 }
