@@ -21,6 +21,11 @@ function validateBookForm(payload) {
         errors.genre = 'Please provide genre.';
     }
 
+    if (!payload || isNaN(Number(payload.year))) {
+        isFormValid = false;
+        errors.year = 'Please provide book release year.';
+    }
+
     if (!payload || typeof payload.description !== 'string' || payload.description.trim().length < 10) {
         isFormValid = false;
         errors.description = 'Description must be at least 10 symbols long.';
@@ -34,11 +39,6 @@ function validateBookForm(payload) {
     if (!VALIDATOR.isISBN(payload.isbn)) {
         isFormValid = false;
         errors.isbn = 'Please provide a valid ISBN.';
-    }
-
-    if (!payload || typeof payload.publisher !== 'string' || payload.publisher.trim().length === 0) {
-        isFormValid = false;
-        errors.publisher = 'Please provide publisher.';
     }
 
     if (!payload || isNaN(Number(payload.pagesCount))) {
@@ -158,10 +158,10 @@ module.exports = {
             book.title = editedBook.title;
             book.author = editedBook.author;
             book.genre = editedBook.genre;
+            book.year = editedBook.year;
             book.description = editedBook.description;
             book.cover = editedBook.cover;
             book.isbn = editedBook.isbn;
-            book.publisher = editedBook.publisher;
             book.pagesCount = editedBook.pagesCount;
             book.price = editedBook.price;
             book.save();

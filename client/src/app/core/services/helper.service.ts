@@ -27,7 +27,7 @@ export class HelperService {
 
       return decoded.sub;
     } catch (err) {
-      return false;
+      return {};
     }
   }
 
