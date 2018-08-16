@@ -9,7 +9,7 @@ const OBJECT_ID = MONGOOSE.Schema.Types.ObjectId;
 const USER_SCHEMA = MONGOOSE.Schema({
     username: { type: STRING, required: true, unique: true },
     email: { type: STRING, required: true, unique: true },
-    avatar: { type: STRING, default: '' },
+    avatar: { type: STRING, default: 'https://i.imgur.com/w7E5M8I.png' },
     password: { type: STRING, required: true },
     salt: { type: STRING, required: true },
     isAdmin: { type: BOOLEAN, default: false },
