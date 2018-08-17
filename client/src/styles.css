@@ -37,7 +37,7 @@ body {
   font-weight: bold;
 }
 
-.username, .email, .pass {
+.username, .email, .pass, .avatar {
   outline: none;
   border: none;
   width: 85%;
@@ -72,7 +72,7 @@ body {
   position: relative;
 }
 
-.fa-user, .fa-envelope, .fa-unlock-alt {
+.fa-user, .fa-envelope, .fa-unlock-alt, .fa-image {
   position: absolute;
   top: 4px;
   left: 14px;

@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       'username': new FormControl('', [
         Validators.required
       ]),
+      'avatar': new FormControl(''),
       'password': new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -63,6 +64,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   get username(): AbstractControl {
     return this.registerForm.get('username');
+  }
+
+  get avatar(): AbstractControl {
+    return this.registerForm.get('avatar');
   }
 
   get password(): AbstractControl {

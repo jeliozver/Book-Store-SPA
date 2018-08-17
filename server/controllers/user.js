@@ -26,10 +26,14 @@ function validateRegisterForm(payload) {
         errors.name = 'Please provide your name.';
     }
 
-    if (payload.avatar) {
+    if (payload.avatar.trim().length !== 0) {
         if (!VALIDATOR.isURL(payload.avatar)) {
             isFormValid = false;
             errors.avatar = 'Please provide a valid link to your avatar image';
+        }
+    } else {
+        if (payload.hasOwnProperty('avatar')) {
+            delete payload['avatar'];
         }
     }
 

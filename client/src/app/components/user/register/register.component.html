@@ -11,6 +11,10 @@
       </div>
     </div>
     <div class="form-field">
+      <input type="url" class="avatar" name="avatar" placeholder="Url to Avatar image" formControlName="avatar" />
+      <i class="fas fa-image" aria-hidden="true"></i>
+    </div>
+    <div class="form-field">
       <input type="text" class="email" name="email" placeholder="Email" formControlName="email" />
       <i class="fa fa-envelope" aria-hidden="true"></i>
       <div *ngIf="email.invalid && (email.dirty || email.touched)" class="input-error">
