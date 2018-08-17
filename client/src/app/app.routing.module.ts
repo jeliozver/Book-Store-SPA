@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: './components/user/user.module#UserModule'
   },
   {
+    path: 'book',
+    loadChildren: './components/book/book.module#BookModule'
+  },
+  {
     path: 'home',
     component: HomeComponent
   },
