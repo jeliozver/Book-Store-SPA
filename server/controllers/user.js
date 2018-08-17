@@ -29,7 +29,7 @@ function validateRegisterForm(payload) {
     if (payload.avatar.trim().length !== 0) {
         if (!VALIDATOR.isURL(payload.avatar)) {
             isFormValid = false;
-            errors.avatar = 'Please provide a valid link to your avatar image';
+            errors.avatar = 'Please provide a valid link to your avatar image or leave the field empty.';
         }
     } else {
         if (payload.hasOwnProperty('avatar')) {
