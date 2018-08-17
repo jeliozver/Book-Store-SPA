@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 // Services
-import { AuthenticationService } from '../../../core/services/authentication.service';
+import { UserService } from '../../../core/services/user.service';
 
 const emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   registerSub$: Subscription;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.registerSub$ = this.authenticationService.register(this.registerForm.value)
+    this.registerSub$ = this.userService.register(this.registerForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);
       });

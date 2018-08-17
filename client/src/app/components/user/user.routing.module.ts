@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 // Guards
 import { IsAnonymousGuard } from '../../core/guards/is-anonymous.guard';
 
-const authenticationRoutes: Routes = [
+const userRoutes: Routes = [
   {
     path: '',
     redirectTo: 'login',
@@ -30,7 +30,7 @@ const authenticationRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(authenticationRoutes)],
+  imports: [RouterModule.forChild(userRoutes)],
   exports: [RouterModule]
 })
-export class AuthenticationRoutingModule { }
+export class UserRoutingModule { }

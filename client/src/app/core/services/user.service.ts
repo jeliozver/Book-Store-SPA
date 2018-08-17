@@ -17,7 +17,7 @@ const loginEndpoint = domain + '/user/login';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class UserService {
 
   constructor(private http: HttpClient) { }
 

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 // Services
-import { AuthenticationService } from '../../../core/services/authentication.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginSub$: Subscription;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) { }
 
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.loginSub$ = this.authenticationService.login(this.loginForm.value)
+    this.loginSub$ = this.userService.login(this.loginForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);
       });

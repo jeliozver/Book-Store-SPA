@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'user',
     canLoad: [IsAnonymousGuard],
-    loadChildren: './components/authentication/authentication.module#AuthenticationModule'
+    loadChildren: './components/user/user.module#UserModule'
   },
   {
     path: 'home',
