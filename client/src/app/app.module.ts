@@ -18,14 +18,10 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { SuccessInterceptor } from './core/interceptors/success.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
-// Directives
-import { MustMatchDirective } from './core/shared/must-match.directive';
-
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    MustMatchDirective
+    HomeComponent
   ],
   imports: [
     BrowserModule,

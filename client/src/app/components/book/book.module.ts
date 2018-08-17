@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 // Modules
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../core/shared/shared.module';
 import { BookRoutingModule } from './book-routing.module';
 
 // Components
@@ -24,6 +25,7 @@ import { BookStoreComponent } from './book-store/book-store.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    SharedModule,
     BookRoutingModule
   ],
 })
