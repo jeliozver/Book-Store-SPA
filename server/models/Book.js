@@ -251,4 +251,260 @@ module.exports.init = () => {
             });
         }
     });
+
+    BOOK.findOne({ title: '1984' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: '1984',
+                author: 'George Orwell',
+                genre: 'Classics',
+                year: '1948',
+                description: 'In 1984, London is a grim city in the totalitarian state of Oceania where Big Brother is always watching you and the Thought Police can practically read your mind. Winston Smith is a man in grave danger for the simple reason that his memory still functions. Drawn into a forbidden love affair, Winston finds the courage to join a secret revolutionary organization called The Brotherhood, dedicated to the destruction of the Party. Together with his beloved Julia, he hazards his life in a deadly match against the powers that be.',
+                cover: 'https://i.imgur.com/33fZ6pq.jpg',
+                isbn: '0452262933',
+                pagesCount: '237',
+                price: '10.87'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Fahrenheit 451' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Fahrenheit 451',
+                author: 'Ray Bradbury',
+                genre: 'Classics',
+                year: '1953',
+                description: 'Guy Montag is a fireman. In his world, where television rules and literature is on the brink of extinction, firemen start fires rather than put them out. His job is to destroy the most illegal of commodities, the printed book, along with the houses in which they are hidden. Montag never questions the destruction and ruin his actions produce, returning each day to his bland life and wife, Mildred, who spends all day with her television “family.” But then he meets an eccentric young neighbor, Clarisse, who introduces him to a past where people didn’t live in fear and to a present where one sees the world through the ideas in books instead of the mindless chatter of television.',
+                cover: 'https://i.imgur.com/1Y4OLwQ.jpg',
+                isbn: '1451673310',
+                pagesCount: '249',
+                price: '8.99'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'King Rat (Asian Saga #4)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'King Rat (Asian Saga #4)',
+                author: 'James Clavell',
+                genre: 'Classics',
+                year: '1962',
+                description: 'The time is World War II. The place is a brutal prison camp deep in Japanese-occupied territory. Here, within the seething mass of humanity, one man, an American corporal, seeks dominance over both captives and captors alike. His weapons are human courage, unblinking understanding of human weaknesses, and total willingness to exploit every opportunity to enlarge his power and corrupt or destroy anyone who stands in his path.',
+                cover: 'https://i.imgur.com/6Pcnx6j.jpg',
+                isbn: '0385333765',
+                pagesCount: '368',
+                price: '16.00'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Dracula' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Dracula',
+                author: 'Bram Stoker',
+                genre: 'Horror',
+                year: '1897',
+                description: 'Prince of the Night. Lord of the Damned. King of Vampires. He is Dracula, the most well-known vampire in the world—and this new illustrated edition of Bram Stoker’s classic tale of terror offers Dracula as you have never seen him before. Brought to life through the stunning visual artistry of Eisner Award-winning illustrator Becky Cloonan (Demo, American Virgin, Victor Von Doom), this new graphically compelling novel offers a spellbinding, edition of the book that launched the world’s enduring fascination with vampires: Bram Stoker’s complete and unabridged Dracula. Illuminated and accentuated by the visionary hand of one of America’s most gifted illustrators, Dracula is perfect for fans of the ghastly and paranormal, and unmissable for fans of True Blood, The Vampire Diaries, and Tim Burton’s macabre new film, Dark Shadows (release May 11, 2012) starring Johnny Depp, Helena Bonham-Carter, Michelle Pfeiffer, Eva Green, and Jackie Earle Haley.',
+                cover: 'https://i.imgur.com/MC2iyOC.jpg',
+                isbn: '0061992151',
+                pagesCount: '384',
+                price: '11.94'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Cujo' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Cujo',
+                author: 'Stephen King',
+                genre: 'Horror',
+                year: '1981',
+                description: 'Outside a peaceful town in central Maine, a monster is waiting. Cujo is a two-hundred-pound Saint Bernard, the best friend Brett Camber has ever had. One day, Cujo chases a rabbit into a cave inhabited by sick bats and emerges as something new altogether. Meanwhile, Vic and Donna Trenton, and their young son Tad, move to Maine. They are seeking peace and quiet, but life in this small town is not what it seems. As Tad tries to fend off the terror that comes to him at night from his bedroom closet, and as Vic and Donna face their own nightmare of a marriage on the rocks, there is no way they can know that a monster, infinitely sinister, waits in the daylight.',
+                cover: 'https://i.imgur.com/Orv5Mmq.jpg',
+                isbn: '1501192248',
+                pagesCount: '400',
+                price: '17.00'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'The Crossing (Harry Bosch #18)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'The Crossing (Harry Bosch #18)',
+                author: 'Michael Connelly',
+                genre: 'Crime novel',
+                year: '2015',
+                description: 'Six months ago, Harry Bosch left the LAPD before they could fire him, and then hired maverick Defense Attorney Mickey Haller to sue the department for forcing him out. Although it wasn\'t the way he wanted to go, Harry has to admit that being out of the game has its benefits. Until Mickey asks him to help on one of his cases, and suddenly Harry is back where he belongs, right in the centre of a particularly puzzling murder mystery. The difference is, this time Harry is working for the defense, aiming to prevent the accused, Da\'Quan Foster, from being convicted. And not only does the prosecution seem to have a cast-iron case, but having crossed over to \'the dark side\' as his former colleagues would put it, Harry is in danger of betraying the very principles he\'s lived by his whole career.',
+                cover: 'https://i.imgur.com/AlpTOHT.jpg',
+                isbn: '1409145875',
+                pagesCount: '432',
+                price: '5.58'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'The Wrong Side of Goodbye (Harry Bosch #19)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'The Wrong Side of Goodbye (Harry Bosch #19)',
+                author: 'Michael Connelly',
+                genre: 'Crime novel',
+                year: '2016',
+                description: 'Harry Bosch is California\'s newest private investigator. He doesn\'t advertise, he doesn\'t have an office, and he\'s picky about who he works for, but it doesn\'t matter. His chops from thirty years with the LAPD speak for themselves.Soon one of Southern California\'s biggest moguls comes calling. The reclusive billionaire is nearing the end of his life and is haunted by one regret. When he was young, he had a relationship with a Mexican girl, his great love. But soon after becoming pregnant, she disappeared. Did she have the baby? And if so, what happened to it?',
+                cover: 'https://i.imgur.com/n0BuYOy.jpg',
+                isbn: '1455524212',
+                pagesCount: '448',
+                price: '11.18'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Two Kinds of Truth (Harry Bosch #20' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Two Kinds of Truth (Harry Bosch #20',
+                author: 'Michael Connelly',
+                genre: 'Crime novel',
+                year: '2017',
+                description: 'Harry Bosch works cold cases, helping out the under-funded San Fernando police department. When a double murder at a local pharmacy is called in, Bosch is the most seasoned detective on the scene. But with experience, come the ghosts of long-forgotten crimes. A death row inmate claims Bosch framed him, and that new DNA evidence proves it. The LAPD investigators say the case is watertight, leaving Bosch out in the wilderness to clear his name and keep a sadistic killer behind bars. There\'s only one person he can trust to help prove his innocence: Mickey Haller, The Lincoln Lawyer.',
+                cover: 'https://i.imgur.com/KaR416M.jpg',
+                isbn: '1409147592',
+                pagesCount: '480',
+                price: '5.75'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'The Gods of Guilt (Mickey Haller #5)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'The Gods of Guilt (Mickey Haller #5)',
+                author: 'Michael Connelly',
+                genre: 'Crime novel',
+                year: '2013',
+                description: 'Mickey Haller gets the text, "Call me ASAP - 187," and the California penal code for murder immediately gets his attention. Murder cases have the highest stakes and the biggest paydays, and they always mean Haller has to be at the top of his game. When Mickey learns that the victim was his own former client, a prostitute he thought he had rescued and put on the straight and narrow path, he knows he is on the hook for this one. He soon finds out that she was back in LA and back in the life. Far from saving her, Mickey may have been the one who put her in danger.',
+                cover: 'https://i.imgur.com/cLN9E2T.jpg',
+                isbn: '1455575992',
+                pagesCount: '416',
+                price: '12.79'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'The Da Vinci Code (Robert Langdon #2)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'The Da Vinci Code (Robert Langdon #2)',
+                author: 'Dan Brown',
+                genre: 'Thriller',
+                year: '2003',
+                description: 'While in Paris, Harvard symbologist Robert Langdon is awakened by a phone call in the dead of the night. The elderly curator of the Louvre has been murdered inside the museum, his body covered in baffling symbols. As Langdon and gifted French cryptologist Sophie Neveu sort through the bizarre riddles, they are stunned to discover a trail of clues hidden in the works of Leonardo da Vinci—clues visible for all to see and yet ingeniously disguised by the painter.',
+                cover: 'https://i.imgur.com/SCLWHCl.jpg',
+                isbn: '0307474275',
+                pagesCount: '597',
+                price: '7.99'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Inferno (Robert Langdon #4)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Inferno (Robert Langdon #4)',
+                author: 'Dan Brown',
+                genre: 'Thriller',
+                year: '2013',
+                description: 'Harvard professor of symbology Robert Langdon awakens in an Italian hospital, disoriented and with no recollection of the past thirty-six hours, including the origin of the macabre object hidden in his belongings. With a relentless female assassin trailing them through Florence, he and his resourceful doctor, Sienna Brooks, are forced to flee. Embarking on a harrowing journey, they must unravel a series of codes, which are the work of a brilliant scientist whose obsession with the end of the world is matched only by his passion for one of the most influential masterpieces ever written, Dante Alighieri\'s The Inferno.',
+                cover: 'https://i.imgur.com/DePtQrp.jpg',
+                isbn: '1400079152',
+                pagesCount: '624',
+                price: '8.49'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Origin (Robert Langdon #5)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Origin (Robert Langdon #5)',
+                author: 'Dan Brown',
+                genre: 'Thriller',
+                year: '2017',
+                description: 'Robert Langdon, Harvard professor of symbology, arrives at the ultramodern Guggenheim Museum Bilbao to attend the unveiling of a discovery that “will change the face of science forever.” The evening’s host is Edmond Kirsch, a forty-year-old billionaire and futurist, and one of Langdon’s first students. But the meticulously orchestrated evening suddenly erupts into chaos, and Kirsch’s precious discovery teeters on the brink of being lost forever. Facing an imminent threat, Langdon is forced to flee. With him is Ambra Vidal, the elegant museum director who worked with Kirsch. They travel to Barcelona on a perilous quest to locate a cryptic password that will unlock Kirsch’s secret.',
+                cover: 'https://i.imgur.com/o8yWvWV.jpg',
+                isbn: '0525563709',
+                pagesCount: '656',
+                price: '7.49'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Metro 2033 (Metro Series #1)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Metro 2033 (Metro Series #1)',
+                author: 'Dmitry Glukhovsky',
+                genre: 'Post-apocalyptic',
+                year: '2013',
+                description: 'The novel that gave birth to the video games \'Metro 2033\' and \'Metro: Last Light\'. The breathtaking original story that inspired both the METRO 2033 and METRO: LAST LIGHT video games! An international bestseller, translated into 35 languages. Set in the shattered subway of a post apocalyptic Moscow, Metro 2033 is a story of intensive underground survival where the fate of mankind rests in your hands. In 2013 the world was devastated by an apocalyptic event, annihilating almost all mankind and turning the earth’s surface into a poisonous wasteland. A handful of survivors took refuge in the depths of the Moscow underground, and human civilization entered a new Dark Age. The year is 2033. An entire generation has been born and raised underground, and their besieged Metro Station-Cities struggle for survival, with each other, and the mutant horrors that await outside. Artyom was born in the last days before the fire. Having never ventured beyond his Metro Station-City limits, one fateful event sparks a desperate mission to the heart of the Metro system, to warn the remnants of mankind of a terrible impending threat. His journey takes him from the forgotten catacombs beneath the subway to the desolate wastelands above, where his actions will determine the fate of mankind. BURIED. ALIVE. It is now two decades since the planet was convulsed by the Final War, which flashed across the continents, engulfing all of them in an instant, to close the final chapter in our history.',
+                cover: 'https://i.imgur.com/USKxLmk.jpg',
+                isbn: '1481845705',
+                pagesCount: '460',
+                price: '16.35'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Metro 2034 (Metro Series #2)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Metro 2034 (Metro Series #2)',
+                author: 'Dmitry Glukhovsky',
+                genre: 'Post-apocalyptic',
+                year: '2015',
+                description: 'The long-awaited sequel to the cult bestseller Metro 2033, the second volume in the Metro trilogy, Metro 2034 continues the story of survival and struggle that unfolds in the mazes of the Moscow subway after WWIII. As the entire civilization was wiped out by atomic bombs and the surface of the planet is polluted with neclear fallout, the only place suitable for men to live are shelters and bunkers, the largest of which is the subway system of Moscow, aka the Metro. The year is 2034. There\'s no hope for humans to return to the surface of Earth, to repopulate the forsaken cities, and to become once again the masters of the world they used to be. So they rebuild a strange and grotesque civilization in the tunnels and at the stations of the subway. Stations become city-states that wage trade and war on each other. A fragile equilibrium is established. And then all can be ruined in matter of days. A new horrible threat looms that can eradicate the remains of humanity and end our era. It would take three unlikely heroes to face this menace.',
+                cover: 'https://i.imgur.com/ecmAq3i.jpg',
+                isbn: '1473204305',
+                pagesCount: '320',
+                price: '12.59'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Metro 2035 (Metro Series #3)' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Metro 2035 (Metro Series #3)',
+                author: 'Dmitry Glukhovsky',
+                genre: 'Post-apocalyptic',
+                year: '2016',
+                description: 'World War Three wiped out the humankind. The planet is empty now. Huge cities became dust and ashes. Railroads are being eaten by rust. Abandoned satellites hang lonely on the orbit. Radio is mute on all the frequencies. The only survivors of the last war were those who made it into the gates of the Metro, the subway system of Moscow city. It’s there, hundreds of feet below the ground, in the vaults of what was constructed as the world’s largest air-raids shelter that people try to outlive the end of the days. It’s there that they created a new world for themselves. The stations of Metro became city-states, and its citizens, torn apart by religions and ideologies are fighting for the now scarce commodities: air, water, and space. This tiny underground world can only remind humans of an immense world they once were the masters of. It’s been twenty years past Doomsday, and yet the survivors refuse to give up. The most stubborn of them keep cherishing a dream: when the radiation level from nuclear bombings subsides, they will be able to return to the surface and have the life their parents once had.',
+                cover: 'https://i.imgur.com/xEYJDiN.jpg',
+                isbn: '1539930726',
+                pagesCount: '502',
+                price: '17.99'
+            });
+        }
+    });
+
+    BOOK.findOne({ title: 'Alex Ferguson: My Biography' }).then((book) => {
+        if (!book) {
+            BOOK.create({
+                title: 'Alex Ferguson: My Biography',
+                author: 'Sir Alex Ferguson',
+                genre: 'Autobiography',
+                year: '2014',
+                description: 'Sir Alex Ferguson\'s compelling story is always honest and revealing he reflects on his managerial career that embraced unprecedented European success for Aberdeen and 26 triumphant seasons with Manchester United. Sir Alex Ferguson\'s best-selling autobiography has now been updated to offer reflections on events at Manchester United since his retirement as well as his teachings at the Harvard Business School, a night at the Oscars and a boat tour round the Hebrides, where he passed unrecognised. The extra material adds fresh insights and detail on his final years as United\'s manager. Both the psychology of management and the detail of football strategy at the top level can be complex matters but no-one has explained them in a more interesting and accessible way for the general reader than Sir Alex does here.',
+                cover: 'https://i.imgur.com/JCXkMpY.jpg',
+                isbn: '034091940X',
+                pagesCount: '416',
+                price: '11.96'
+            });
+        }
+    });
 };
