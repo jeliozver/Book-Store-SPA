@@ -41,12 +41,12 @@ function validateBookForm(payload) {
         errors.isbn = 'Please provide a valid ISBN.';
     }
 
-    if (!payload || isNaN(Number(payload.pagesCount))) {
+    if (!payload || isNaN(Number(payload.pagesCount)) || payload.pagesCount === '') {
         isFormValid = false;
         errors.pagesCount = 'Please provide number of pages.';
     }
 
-    if (!payload || isNaN(Number(payload.price)) || Number(payload.price) < 0) {
+    if (!payload || isNaN(Number(payload.price)) || Number(payload.price) < 0 || payload.pagesCount === '') {
         isFormValid = false;
         errors.price = 'Please provide book price.';
     }
@@ -64,7 +64,7 @@ function validateRatingForm(payload) {
     if (
         !payload
         || isNaN(Number(payload.rating))
-        || !VALIDATOR.isInt(payload.rating)
+        || !VALIDATOR.isInt(payload.rating.toString())
         || Number(payload.rating) < 1
         || Number(payload.rating) > 5
     ) {
@@ -167,7 +167,8 @@ module.exports = {
             book.save();
 
             return res.status(200).json({
-                message: 'Book edited successfully!'
+                message: 'Book edited successfully!',
+                data: book
             });
         }).catch((err) => {
             console.log(err);
@@ -188,7 +189,8 @@ module.exports = {
             }
 
             return res.status(200).json({
-                message: 'Book deleted successfully.'
+                message: 'Book deleted successfully.',
+                data: deletedBook
             });
         }).catch((err) => {
             console.log(err);

@@ -34,13 +34,26 @@ module.exports = {
                 });
             }
 
-            CART.update(
-                { user: userId },
-                { $push: { books: bookId } },
-                { $inc: { totalPrice: book.price } }
-            ).then(() => {
+            CART.findOne({ user: userId }).then((cart) => {
+                let bookIds = [];
+
+                for (let b of cart.books) {
+                    bookIds.push(b.toString());
+                }
+
+                if (bookIds.indexOf(bookId) !== -1) {
+                    return res.status(400).json({
+                        message: 'Book is already in your cart'
+                    });
+                }
+
+                cart.books.push(bookId);
+                cart.totalPrice += book.price;
+                cart.save();
+
                 res.status(200).json({
-                    message: 'Book added to cart!'
+                    message: 'Book added to cart!',
+                    data: cart
                 });
             });
         }).catch((err) => {
@@ -62,13 +75,16 @@ module.exports = {
                 });
             }
 
-            CART.update(
-                { user: userId },
-                { $pull: { books: bookId } },
-                { $inc: { totalPrice: -Math.abs(book.price) } }
-            ).then(() => {
+            CART.findOne({ user: userId }).then((cart) => {
+                cart.books = cart.books
+                    .map(b => b.toString())
+                    .filter(b => b !== bookId);
+                cart.totalPrice -= book.price;
+                cart.save();
+
                 res.status(200).json({
-                    message: 'Book removed from cart!'
+                    message: 'Book removed from cart!',
+                    data: cart
                 });
             });
         }).catch((err) => {

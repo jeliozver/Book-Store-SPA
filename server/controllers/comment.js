@@ -18,17 +18,6 @@ function validateCommentForm(payload) {
 }
 
 module.exports = {
-    get: (req, res) => {
-        let bookId = req.params.bookId;
-
-        COMMENT.find({ book: bookId }).then((comments) => {
-            return res.status(200).json({
-                message: 'Comments retreived successfully!',
-                data: comments
-            });
-        });
-    },
-
     add: (req, res) => {
         let bookId = req.params.bookId;
         let userId = req.user.id;

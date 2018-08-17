@@ -24,8 +24,7 @@ module.exports = (APP) => {
     APP.delete('/book/delete/:bookId', AUTH.isInRole('Admin'), BOOK_CONTROLLER.delete);
     APP.post('/book/rate/:bookId', AUTH.isAuth, BOOK_CONTROLLER.rate);
     APP.post('/book/addToFavorites/:bookId', AUTH.isAuth, BOOK_CONTROLLER.addToFavorites);
-
-    APP.get('/comment/:bookId', COMMENT_CONTROLLER.get);
+    
     APP.post('/comment/add/:bookId', AUTH.isAuth, COMMENT_CONTROLLER.add);
     APP.put('/comment/edit/:commentId', AUTH.isAuth, COMMENT_CONTROLLER.edit);
     APP.delete('/comment/delete/:commentId', AUTH.isAuth, COMMENT_CONTROLLER.delete);
