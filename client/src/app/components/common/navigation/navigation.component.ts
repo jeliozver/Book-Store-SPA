@@ -48,6 +48,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   logout(): void {
+    this.username = undefined;
     this.helperService.clearSession();
     this.helperService.isUserLogged.next(false);
   }
