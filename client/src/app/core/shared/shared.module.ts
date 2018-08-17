@@ -3,17 +3,20 @@ import { NgModule } from '@angular/core';
 
 // Components
 import { CommentComponent } from './comment/comment.component';
+import { CartComponent } from './cart/cart.component';
 
 // Directives
 import { MustMatchDirective } from './must-match.directive';
 
-
 @NgModule({
   declarations: [
     CommentComponent,
-    MustMatchDirective
+    CartComponent,
+    MustMatchDirective,
   ],
   exports: [
+    CommentComponent,
+    CartComponent,
     MustMatchDirective
   ]
 })
