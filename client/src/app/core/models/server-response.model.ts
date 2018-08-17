@@ -1,7 +1,7 @@
 export class ServerResponse<T> {
   constructor(
     public message: string,
-    public data?: { [key: string]: T },
+    public data?: T,
     public errors?: { [key: string]: string }
   ) { }
 }

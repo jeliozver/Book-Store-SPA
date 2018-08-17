@@ -1,13 +1,21 @@
+import { Comment } from './comment.model';
+
 export class Book {
   constructor(
-    title: 'Alex Ferguson: My Biography',
-    author: 'Sir Alex Ferguson',
-    genre: 'Autobiography',
-    year: '2014',
-    description: '',
-    cover: 'https://i.imgur.com/JCXkMpY.jpg',
-    isbn: '034091940X',
-    pagesCount: '416',
-    price: '11.96'
+    public title: string,
+    public author: string,
+    public genre: string,
+    public year: number,
+    public description: string,
+    public cover: string,
+    public isbn: string,
+    public pagesCount: number,
+    public price: number,
+    public creationDate?: Date,
+    public currentRating?: number,
+    public ratingPoints?: number,
+    public ratedCount?: number,
+    public purchasesCount?: number,
+    public comments?: Comment[]
   ) { }
 }
