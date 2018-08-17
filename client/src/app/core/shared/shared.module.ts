@@ -1,20 +1,18 @@
 // Decorators
 import { NgModule } from '@angular/core';
 
-// Modules
-// Modules imports here
-
 // Components
-// Components imports here
+import { CommentComponent } from './comment/comment.component';
 
 // Directives
 import { MustMatchDirective } from './must-match.directive';
 
+
 @NgModule({
   declarations: [
+    CommentComponent,
     MustMatchDirective
   ],
-  imports: [],
   exports: [
     MustMatchDirective
   ]
