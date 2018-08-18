@@ -309,7 +309,7 @@ module.exports = {
             .then((result) => {
                 return res.status(200).json({
                     message: 'Books retreived successfully!',
-                    body: result,
+                    data: result,
                     query: searchParams
                 });
             })
