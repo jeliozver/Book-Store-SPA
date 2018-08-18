@@ -9,8 +9,13 @@
     <li>
       <a routerLink="/home">Home</a>
     </li>
-    <li>
-      <a routerLink="/home">Home</a>
+    <li id="admin-panel">
+      <a class="plus" routerLink="/home">Admin Panel</a>
+      <ul class="drop-down-admin">
+        <li class="drop-down-items">
+          <a routerLink="/book/create">Create Book</a>
+        </li>
+      </ul>
     </li>
     <li *ngIf="!isUserLogged()" class="menu-item-right">
       <a routerLink="/user/register">Register</a>
