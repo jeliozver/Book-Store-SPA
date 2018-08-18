@@ -90,7 +90,6 @@ export class BookEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    console.log(this.editBookForm);
     this.editBookSub$ = this.bookService
       .editBook(this.id, this.editBookForm.value)
       .subscribe(() => {

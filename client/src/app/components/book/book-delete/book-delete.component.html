@@ -1,3 +1,26 @@
-<p>
-  book-delete works!
-</p>
+<div class="form delete-book-form">
+  <form #formDir="ngForm" [formGroup]="deleteBookForm" (ngSubmit)="onSubmit()">
+    <h1>Delete Book</h1>
+    <div class="form-field">
+      <input type="text" class="title" name="title" placeholder="Book Title" formControlName="title" disabled />
+      <i class="fas fa-book" aria-hidden="true"></i>
+    </div>
+    <div class="form-field">
+      <input type="text" class="author" name="author" placeholder="Book Author" formControlName="author" disabled />
+      <i class="fas fa-user" aria-hidden="true"></i>
+    </div>
+    <div class="form-field">
+      <input type="text" class="genre" name="genre" placeholder="Book Genre" formControlName="genre" disabled />
+      <i class="fas fa-clipboard" aria-hidden="true"></i>
+    </div>
+    <div class="form-field">
+      <textarea class="description" name="description" placeholder="Book description" formControlName="description" cols="30" rows="3" disabled></textarea>
+      <i class="fas fa-pen" aria-hidden="true"></i>
+    </div>
+    <div class="form-field">
+      <input type="number" class="price" name="price" placeholder="Book Price" formControlName="price" step="0.1" disabled />
+      <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+    </div>
+    <input type="submit" class="submit delete-book" value="Confirm Delete" />
+  </form>
+</div>
