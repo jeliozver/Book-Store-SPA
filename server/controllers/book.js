@@ -264,6 +264,56 @@ module.exports = {
     },
 
     search: (req, res) => {
-        // TODO
-    },
+        let params = req.query;
+        let searchParams = {
+            query: {},
+            sort: null,
+            skip: null,
+            limit: null,
+        };
+
+        if (params.query) {
+            params.query = JSON.parse(params.query);
+            
+            for (let q in params.query) {
+                if (params.query.hasOwnProperty(q)) {
+                    if (typeof params.query[q] === 'string') {
+                        searchParams.query[q] = { '$regex': `${params.query[q].toLowerCase()}`, '$options': 'i' };
+                    } else {
+                        searchParams.query[q] = params.query[q];
+                    }
+                }
+            }
+        }
+
+        if (params.sort) {
+            searchParams.sort = JSON.parse(params.sort);
+        }
+
+        if (params.skip) {
+            searchParams.skip = JSON.parse(params.skip);
+        }
+
+        if (params.limit) {
+            searchParams.limit = JSON.parse(params.limit);
+        }
+
+        BOOK
+            .find(searchParams.query)
+            .sort(searchParams.sort)
+            .skip(searchParams.skip)
+            .limit(searchParams.limit)
+            .then((result) => {
+                return res.status(200).json({
+                    message: 'Books retreived successfully!',
+                    body: result,
+                    query: searchParams
+                });
+            })
+            .catch(() => {
+                return res.status(400).json({
+                    message: 'Bad Request!'
+                });
+            });
+    }
 };
