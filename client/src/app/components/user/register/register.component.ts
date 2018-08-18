@@ -56,7 +56,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.registerSub$ = this.userService.register(this.registerForm.value)
+    this.registerSub$ = this.userService
+      .register(this.registerForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);
       });
