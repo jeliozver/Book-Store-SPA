@@ -1,100 +1,100 @@
 <div class="form edit-book-form">
-    <form #formDir="ngForm" [formGroup]="editBookForm" (ngSubmit)="onSubmit()">
-      <h1>Edit Book</h1>
-      <div class="form-field">
-        <input type="text" class="title" name="title" placeholder="Book Title" formControlName="title" />
-        <i class="fas fa-book" aria-hidden="true"></i>
-        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="input-error">
-          <div *ngIf="title.errors.required">
-            Book title is required
-          </div>
+  <form #formDir="ngForm" [formGroup]="editBookForm" (ngSubmit)="onSubmit()">
+    <h1>Edit Book</h1>
+    <div class="form-field">
+      <input type="text" class="title" name="title" placeholder="Book Title" formControlName="title" />
+      <i class="fas fa-book" aria-hidden="true"></i>
+      <div *ngIf="title.invalid && (title.dirty || title.touched)" class="input-error">
+        <div *ngIf="title.errors.required">
+          Book title is required
         </div>
       </div>
-      <div class="form-field">
-        <input type="text" class="author" name="author" placeholder="Book Author" formControlName="author" />
-        <i class="fas fa-user" aria-hidden="true"></i>
-        <div *ngIf="author.invalid && (author.dirty || author.touched)" class="input-error">
-          <div *ngIf="author.errors.required">
-            Book author is required
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="text" class="author" name="author" placeholder="Book Author" formControlName="author" />
+      <i class="fas fa-user" aria-hidden="true"></i>
+      <div *ngIf="author.invalid && (author.dirty || author.touched)" class="input-error">
+        <div *ngIf="author.errors.required">
+          Book author is required
         </div>
       </div>
-      <div class="form-field">
-        <input type="text" class="genre" name="genre" placeholder="Book Genre" formControlName="genre" />
-        <i class="fas fa-clipboard" aria-hidden="true"></i>
-        <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="input-error">
-          <div *ngIf="genre.errors.required">
-            Book genre is required
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="text" class="genre" name="genre" placeholder="Book Genre" formControlName="genre" />
+      <i class="fas fa-clipboard" aria-hidden="true"></i>
+      <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="input-error">
+        <div *ngIf="genre.errors.required">
+          Book genre is required
         </div>
       </div>
-      <div class="form-field">
-        <input type="number" class="year" name="year" placeholder="Book Relase Year" formControlName="year" step="1" />
-        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-        <div *ngIf="year.invalid && (year.dirty || year.touched)" class="input-error">
-          <div *ngIf="year.errors.required">
-            Book release year is required
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="number" class="year" name="year" placeholder="Book Relase Year" formControlName="year" step="1" />
+      <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+      <div *ngIf="year.invalid && (year.dirty || year.touched)" class="input-error">
+        <div *ngIf="year.errors.required">
+          Book release year is required
         </div>
       </div>
-      <div class="form-field">
-        <textarea class="description" name="description" placeholder="Book description" formControlName="description" cols="30" rows="10"></textarea>
-        <i class="fas fa-pen" aria-hidden="true"></i>
-        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="input-error">
-          <div *ngIf="description.errors.required || description.errors.minlength ">
-            Book description must be more than 10 symbols long
-          </div>
+    </div>
+    <div class="form-field">
+      <textarea class="description" name="description" placeholder="Book description" formControlName="description" cols="30" rows="10"></textarea>
+      <i class="fas fa-pen" aria-hidden="true"></i>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="input-error">
+        <div *ngIf="description.errors.required || description.errors.minlength ">
+          Book description must be more than 10 symbols long
         </div>
       </div>
-      <div class="form-field">
-        <input type="url" class="cover" name="cover" placeholder="Book Cover" formControlName="cover" />
-        <i class="fas fa-book-open" aria-hidden="true"></i>
-        <div *ngIf="cover.invalid && (cover.dirty || cover.touched)" class="input-error">
-          <div *ngIf="cover.errors.required">
-            Book cover is required
-          </div>
-          <div *ngIf="!cover.errors.isUrl">
-            Book cover must be a valid Url
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="url" class="cover" name="cover" placeholder="Book Cover" formControlName="cover" />
+      <i class="fas fa-book-open" aria-hidden="true"></i>
+      <div *ngIf="cover.invalid && (cover.dirty || cover.touched)" class="input-error">
+        <div *ngIf="cover.errors.required">
+          Book cover is required
+        </div>
+        <div *ngIf="!cover.errors.isUrl">
+          Book cover must be a valid Url
         </div>
       </div>
-      <div class="form-field">
-        <input type="text" class="isbn" name="isbn" placeholder="Book ISBN" formControlName="isbn" />
-        <i class="fas fas fa-barcode" aria-hidden="true"></i>
-        <div *ngIf="isbn.invalid && (isbn.dirty || isbn.touched)" class="input-error">
-          <div *ngIf="isbn.errors.required">
-            Book isbn is required
-          </div>
-          <div *ngIf="!isbn.errors.isIsbn">
-            Please specify a valid ISBN
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="text" class="isbn" name="isbn" placeholder="Book ISBN" formControlName="isbn" />
+      <i class="fas fas fa-barcode" aria-hidden="true"></i>
+      <div *ngIf="isbn.invalid && (isbn.dirty || isbn.touched)" class="input-error">
+        <div *ngIf="isbn.errors.required">
+          Book isbn is required
+        </div>
+        <div *ngIf="!isbn.errors.isIsbn">
+          Please specify a valid ISBN
         </div>
       </div>
-      <div class="form-field">
-        <input type="number" class="pagesCount" name="pagesCount" placeholder="Book Pages Count" formControlName="pagesCount" step="1"
-        />
-        <i class="fas fa-file-alt" aria-hidden="true"></i>
-        <div *ngIf="pagesCount.invalid && (pagesCount.dirty || pagesCount.touched)" class="input-error">
-          <div *ngIf="pagesCount.errors.required">
-            Book pages count is required
-          </div>
-          <div *ngIf="pagesCount.errors.min">
-            Pages count must be positive number
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="number" class="pagesCount" name="pagesCount" placeholder="Book Pages Count" formControlName="pagesCount" step="1"
+      />
+      <i class="fas fa-file-alt" aria-hidden="true"></i>
+      <div *ngIf="pagesCount.invalid && (pagesCount.dirty || pagesCount.touched)" class="input-error">
+        <div *ngIf="pagesCount.errors.required">
+          Book pages count is required
+        </div>
+        <div *ngIf="pagesCount.errors.min">
+          Pages count must be positive number
         </div>
       </div>
-      <div class="form-field">
-        <input type="number" class="price" name="price" placeholder="Book Price" formControlName="price" step="0.1" />
-        <i class="fas fa-dollar-sign" aria-hidden="true"></i>
-        <div *ngIf="price.invalid && (price.dirty || price.touched)" class="input-error">
-          <div *ngIf="price.errors.required">
-            Book price is required
-          </div>
-          <div *ngIf="price.errors.min">
-            Price must be positive number
-          </div>
+    </div>
+    <div class="form-field">
+      <input type="number" class="price" name="price" placeholder="Book Price" formControlName="price" step="0.1" />
+      <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+      <div *ngIf="price.invalid && (price.dirty || price.touched)" class="input-error">
+        <div *ngIf="price.errors.required">
+          Book price is required
+        </div>
+        <div *ngIf="price.errors.min">
+          Price must be positive number
         </div>
       </div>
-      <input type="submit" class="submit" value="Submit Book" [disabled]="editBookForm.invalid" />
-    </form>
-  </div>
+    </div>
+    <input type="submit" class="submit" value="Submit Book" [disabled]="editBookForm.invalid" />
+  </form>
+</div>

@@ -25,6 +25,7 @@ import { isIsbnValidator } from '../../../core/shared/is-isbn.directive';
 export class BookEditComponent implements OnInit, OnDestroy {
   editBookForm: FormGroup;
   editBookSub$: Subscription;
+  bookSub$: Subscription;
   id: string;
 
   constructor(
@@ -36,7 +37,8 @@ export class BookEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initForm();
     this.id = this.route.snapshot.paramMap.get('bookId');
-    this.bookService
+
+    this.bookSub$ = this.bookService
       .getSingleBook(this.id)
       .subscribe((res) => {
         this.editBookForm.patchValue({ ...res.data });
@@ -81,12 +83,14 @@ export class BookEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.bookSub$.unsubscribe();
     if (this.editBookSub$) {
       this.editBookSub$.unsubscribe();
     }
   }
 
   onSubmit(): void {
+    console.log(this.editBookForm);
     this.editBookSub$ = this.bookService
       .editBook(this.id, this.editBookForm.value)
       .subscribe(() => {
