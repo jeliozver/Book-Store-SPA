@@ -27,8 +27,7 @@ export const mustMatchValidator: ValidatorFn = (control: FormGroup): ValidationE
   }]
 })
 export class MustMatchDirective implements Validator {
-
-  validate(control: AbstractControl): ValidationErrors {
+  validate(control: AbstractControl): ValidationErrors | null {
     return mustMatchValidator(control);
   }
 }
