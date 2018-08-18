@@ -21,7 +21,9 @@ import { IsIsbnDirective } from './is-isbn.directive';
   exports: [
     CommentComponent,
     CartComponent,
-    MustMatchDirective
+    MustMatchDirective,
+    IsUrlDirective,
+    IsIsbnDirective
   ]
 })
 export class SharedModule { }
