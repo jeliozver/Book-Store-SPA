@@ -37,7 +37,19 @@ body {
   font-weight: bold;
 }
 
-.username, .email, .pass, .avatar {
+.username,
+.email,
+.pass,
+.avatar,
+.title,
+.author,
+.cover,
+.genre,
+.year,
+.description,
+.isbn,
+.pagesCount,
+.price {
   outline: none;
   border: none;
   width: 85%;
@@ -72,7 +84,18 @@ body {
   position: relative;
 }
 
-.fa-user, .fa-envelope, .fa-unlock-alt, .fa-image {
+.fa-user,
+.fa-envelope,
+.fa-unlock-alt,
+.fa-image,
+.fa-book,
+.fa-book-open,
+.fa-clipboard,
+.fa-sign-in-alt,
+.fa-pen,
+.fa-barcode,
+.fa-file-alt,
+.fa-dollar-sign {
   position: absolute;
   top: 4px;
   left: 14px;
