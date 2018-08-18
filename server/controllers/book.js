@@ -31,12 +31,12 @@ function validateBookForm(payload) {
         errors.description = 'Description must be at least 10 symbols long.';
     }
 
-    if (!VALIDATOR.isURL(payload.cover)) {
+    if (!payload || !payload.cover || !VALIDATOR.isURL(payload.cover)) {
         isFormValid = false;
         errors.cover = 'Please provide proper url for the book\'s cover';
     }
 
-    if (!VALIDATOR.isISBN(payload.isbn)) {
+    if (!payload || !payload.isbn || !VALIDATOR.isISBN(payload.isbn)) {
         isFormValid = false;
         errors.isbn = 'Please provide a valid ISBN.';
     }
