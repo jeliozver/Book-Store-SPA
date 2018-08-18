@@ -182,7 +182,7 @@ input:disabled, textarea:disabled {
   background: #DDD;
 }
 
-.submit:disabled {
+.submit:disabled, .delete-book {
   background-color: #C3002F;
 }
 
