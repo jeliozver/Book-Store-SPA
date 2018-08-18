@@ -51,7 +51,7 @@ export class BookService {
     return this.http.post<ServerResponse<Book>>(addToFavoritesEndpoint + id, {});
   }
 
-  searchBook(query: string): Observable<ServerResponse<Book[]>> {
+  search(query: string): Observable<ServerResponse<Book[]>> {
     return this.http.get<ServerResponse<Book[]>>(searchBookEndpoint + query);
   }
 }
