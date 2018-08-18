@@ -16,6 +16,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   isLogged: boolean;
   isAdmin: boolean;
   statusChecker: number;
+  cartItems = 0;
 
   constructor(private helperService: HelperService) { }
 
@@ -57,6 +58,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.username = undefined;
+    this.isAdmin = undefined;
     this.helperService.clearSession();
     this.helperService.isUserLogged.next(false);
   }

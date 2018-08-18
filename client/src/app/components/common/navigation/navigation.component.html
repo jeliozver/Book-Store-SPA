@@ -4,30 +4,39 @@
       <a routerLink="/home">Home</a>
     </li>
     <li>
-      <a routerLink="/home">Home</a>
+      <a routerLink="/book/store">Book Store</a>
     </li>
-    <li>
-      <a routerLink="/home">Home</a>
-    </li>
-    <li *ngIf="isUserAdmin()" id="admin-panel">
-      <a class="plus" routerLink="/home">Admin Panel</a>
-      <ul class="drop-down-admin">
-        <li class="drop-down-items">
-          <a routerLink="/book/create">Create Book</a>
-        </li>
-      </ul>
-    </li>
-    <li *ngIf="!isUserLogged()" class="menu-item-right">
-      <a routerLink="/user/register">Register</a>
-    </li>
-    <li *ngIf="!isUserLogged()" class="menu-item-right">
-      <a routerLink="/user/login">Login</a>
-    </li>
-    <li *ngIf="isUserLogged()" class="menu-item-right">
-      <a routerLink="/home" (click)="logout()">
-        {{getUsername()}}
-        <span>Hello, {{username}}</span> Logout
-      </a>
-    </li>
+    <ng-template [ngIf]="isUserLogged()">
+      <li>
+        <a routerLink="/book/myFavoriteBooks">My Favorite Books</a>
+      </li>
+      <li *ngIf="isUserAdmin()" id="admin-panel">
+        <a class="plus" routerLink="/home">Admin Panel</a>
+        <ul class="drop-down-admin">
+          <li class="drop-down-items">
+            <a routerLink="/book/create">Create Book</a>
+          </li>
+        </ul>
+      </li>
+    </ng-template>
+    <ng-template [ngIf]="!isUserLogged()">
+      <li class="menu-item-right">
+        <a routerLink="/user/register">Register</a>
+      </li>
+      <li class="menu-item-right">
+        <a routerLink="/user/login">Login</a>
+      </li>
+    </ng-template>
+    <ng-template [ngIf]="isUserLogged()">
+      <li *ngIf="isUserLogged()" class="menu-item-right">
+        <a routerLink="/home" (click)="logout()">
+          {{getUsername()}}
+          <span>Hello, {{username}}</span> Logout
+        </a>
+      </li>
+      <li *ngIf="isUserLogged()" class="menu-item-right">
+        <a routerLink="/user/cart">Cart ({{cartItems}})</a>
+      </li>
+    </ng-template>
   </ul>
 </nav>

@@ -10,6 +10,7 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookDeleteComponent } from './book-delete/book-delete.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookStoreComponent } from './book-store/book-store.component';
+import { BookFavoritesComponent } from './book-favorites/book-favorites.component';
 
 // Guards
 import { IsAuthenticatedGuard } from '../../core/guards/is-authenticated.guard';
@@ -24,6 +25,11 @@ const bookRoutes: Routes = [
   {
     path: 'store',
     component: BookStoreComponent
+  },
+  {
+    path: 'myFavoriteBooks',
+    canActivate: [IsAuthenticatedGuard],
+    component: BookFavoritesComponent
   },
   {
     path: 'details/:bookId',
