@@ -178,4 +178,12 @@ nav ul li:hover>ul {
   border-radius: 5px;
 }
 
+input:disabled, textarea:disabled {
+  background: #DDD;
+}
+
+.submit:disabled {
+  background-color: #C3002F;
+}
+
 /* Forms End */
