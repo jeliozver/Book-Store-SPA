@@ -14,6 +14,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   isLoggedSub$: Subscription;
   username: string;
   isLogged: boolean;
+  isAdmin: boolean;
   statusChecker: number;
 
   constructor(private helperService: HelperService) { }
@@ -39,6 +40,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
   isUserLogged(): boolean {
     return this.isLogged;
+  }
+
+  isUserAdmin(): boolean {
+    if (!this.isAdmin) {
+      this.isAdmin = this.helperService.isAdmin();
+    }
+    return this.isAdmin;
   }
 
   getUsername(): void {

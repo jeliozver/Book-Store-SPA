@@ -308,7 +308,7 @@ module.exports = {
             .limit(searchParams.limit)
             .then((result) => {
                 return res.status(200).json({
-                    message: 'Books retreived successfully!',
+                    message: '',
                     data: result,
                     query: searchParams
                 });

@@ -9,7 +9,7 @@
     <li>
       <a routerLink="/home">Home</a>
     </li>
-    <li id="admin-panel">
+    <li *ngIf="isUserAdmin()" id="admin-panel">
       <a class="plus" routerLink="/home">Admin Panel</a>
       <ul class="drop-down-admin">
         <li class="drop-down-items">

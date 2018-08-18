@@ -32,7 +32,9 @@ export class SuccessInterceptor implements HttpInterceptor {
         tap(
           (event: HttpEvent<any>) => {
             if (event instanceof HttpResponse) {
-              this.toastr.success(event.body.message);
+              if (event.body.message || event.body.message !== '') {
+                this.toastr.success(event.body.message);
+              }
             }
 
             if (event instanceof HttpResponse && request.url.endsWith('login') ||
