@@ -274,11 +274,14 @@ module.exports = {
 
         if (params.query) {
             params.query = JSON.parse(params.query);
-            
+
             for (let q in params.query) {
                 if (params.query.hasOwnProperty(q)) {
                     if (typeof params.query[q] === 'string') {
-                        searchParams.query[q] = { '$regex': `${params.query[q].toLowerCase()}`, '$options': 'i' };
+                        searchParams.query[q] = {
+                            '$regex': `${params.query[q].toLowerCase()}`,
+                            '$options': 'i'
+                        };
                     } else {
                         searchParams.query[q] = params.query[q];
                     }
