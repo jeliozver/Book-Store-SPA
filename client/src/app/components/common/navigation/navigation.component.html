@@ -1,42 +1,27 @@
-<nav class="nav">
-  <ul>
-    <li>
-      <a routerLink="/home">Home</a>
-    </li>
-    <li>
-      <a routerLink="/book/store">Book Store</a>
-    </li>
-    <ng-template [ngIf]="isUserLogged()">
-      <li>
-        <a routerLink="/book/myFavoriteBooks">My Favorite Books</a>
-      </li>
-      <li *ngIf="isUserAdmin()" id="admin-panel">
-        <a class="plus" routerLink="/home">Admin Panel</a>
-        <ul class="drop-down-admin">
-          <li class="drop-down-items">
-            <a routerLink="/book/create">Create Book</a>
-          </li>
-        </ul>
-      </li>
-    </ng-template>
+<nav class="topnav">
+  <a routerLink="/home">Home</a>
+  <a routerLink="/book/store">Book Store</a>
+  <ng-template [ngIf]="isUserLogged()">
+    <a routerLink="/book/myFavoriteBooks">My Favorite Books</a>
+    <a *ngIf="isUserAdmin()" routerLink="/book/create">Create Book</a>
+  </ng-template>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="title, author, genre, ISBN..." name="search" />
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  <div>
     <ng-template [ngIf]="!isUserLogged()">
-      <li class="menu-item-right">
-        <a routerLink="/user/register">Register</a>
-      </li>
-      <li class="menu-item-right">
-        <a routerLink="/user/login">Login</a>
-      </li>
+      <a class="menu-item-right" routerLink="/user/register">Register</a>
+      <a class="menu-item-right" routerLink="/user/login">Login</a>
     </ng-template>
     <ng-template [ngIf]="isUserLogged()">
-      <li class="menu-item-right">
-        <a routerLink="/home" (click)="logout()">
-          {{getUsername()}}
-          <span>Hello, {{username}}</span> Logout
-        </a>
-      </li>
-      <li class="menu-item-right">
-        <a routerLink="/user/cart">Cart ({{cartItems}})</a>
-      </li>
+      <a class="menu-item-right" routerLink="/home" (click)="logout()">
+        {{getUsername()}}
+        <span>Hello, {{username}}</span> Logout
+      </a>
+      <a class="menu-item-right" routerLink="/user/cart">Cart ({{cartItems}})</a>
     </ng-template>
-  </ul>
+  </div>
 </nav>
