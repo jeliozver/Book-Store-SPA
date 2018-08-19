@@ -1,9 +1,11 @@
 // Decorators and Lifehooks
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
+// RXJS
+import { Subscription } from 'rxjs';
+
 // Services
 import { HelperService } from '../../../core/services/helper.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -47,6 +49,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     if (!this.isAdmin) {
       this.isAdmin = this.helperService.isAdmin();
     }
+
     return this.isAdmin;
   }
 
