@@ -1,20 +1,19 @@
-<div *ngIf="newestBooks" class="books-home">
+<h1>Welcome to our Book Store</h1>
+<div *ngIf="mostPurchasedBooks" class="books-home">
   <div class="panel">
-    <h2>Newest Books</h2>
+    <h2>Most Purchased Books</h2>
   </div>
-  <app-book *ngFor="let book of newestBooks" [book]="book"></app-book>
+  <app-book *ngFor="let book of mostPurchasedBooks" [book]="book"></app-book>
 </div>
-
 <div *ngIf="bestRatedBooks" class="books-home">
   <div class="panel">
     <h2>Best Rated Books</h2>
   </div>
   <app-book *ngFor="let book of bestRatedBooks" [book]="book"></app-book>
 </div>
-
-<div *ngIf="mostPurchasedBooks" class="books-home">
+<div *ngIf="newestBooks" class="books-home">
   <div class="panel">
-    <h2>Most Purchased Books</h2>
+    <h2>Newest Books</h2>
   </div>
-  <app-book *ngFor="let book of mostPurchasedBooks" [book]="book"></app-book>
+  <app-book *ngFor="let book of newestBooks" [book]="book"></app-book>
 </div>
