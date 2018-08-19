@@ -23,6 +23,13 @@ const BOOK_SCHEMA = MONGOOSE.Schema({
     comments: [{ type: OBJECT_ID, ref: 'Comment' }]
 });
 
+BOOK_SCHEMA.index({
+    title: 'text',
+    author: 'text',
+    genre: 'text',
+    isbn: 'text'
+});
+
 const BOOK = MONGOOSE.model('Book', BOOK_SCHEMA);
 
 module.exports = BOOK;
