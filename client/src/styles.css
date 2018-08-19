@@ -18,67 +18,6 @@ body {
   text-align: center;
 }
 
-/* Nav Start */
-
-nav {
-  background-color: #313532;
-}
-
-nav ul {
-  list-style-type: none;
-  position: relative;
-}
-
-nav li {
-  display: inline-block;
-  background-color: #313532;
-}
-
-.nav a {
-  display: block;
-  padding: 0 10px;
-  color: #FFF;
-  font-size: 20px;
-  line-height: 60px;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  background-color: #F5B324;
-  color: #000;
-}
-
-.drop-down-admin {
-  display: none;
-  position: absolute;
-}
-
-nav ul li:hover>ul {
-  display: inline-block;
-}
-
-.drop-down-items {
-  width: 170px;
-  position: relative;
-  display: block;
-}
-
-#admin-panel {
-  position: relative;
-  z-index: 1;
-}
-
-.plus::after {
-  content: ' +';
-}
-
-.menu-item-right {
-  float: right;
-  margin-right: 20px;
-}
-
-/* Nav End */
-
 /* Forms Start */
 
 .form {
