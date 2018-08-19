@@ -28,13 +28,13 @@
       </li>
     </ng-template>
     <ng-template [ngIf]="isUserLogged()">
-      <li *ngIf="isUserLogged()" class="menu-item-right">
+      <li class="menu-item-right">
         <a routerLink="/home" (click)="logout()">
           {{getUsername()}}
           <span>Hello, {{username}}</span> Logout
         </a>
       </li>
-      <li *ngIf="isUserLogged()" class="menu-item-right">
+      <li class="menu-item-right">
         <a routerLink="/user/cart">Cart ({{cartItems}})</a>
       </li>
     </ng-template>
