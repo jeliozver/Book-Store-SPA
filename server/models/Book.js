@@ -46,6 +46,7 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/VRtPMP2.jpg',
                 isbn: '076531178X',
                 pagesCount: '541',
+                purchasesCount: 12,
                 price: '5.75'
             });
         }
@@ -62,6 +63,7 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/lZKZckN.jpg',
                 isbn: '0765316889',
                 pagesCount: '592',
+                purchasesCount: 13,
                 price: '11.04'
             });
         }
@@ -78,6 +80,7 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/7m7fOma.jpg',
                 isbn: '0765316897',
                 pagesCount: '576',
+                purchasesCount: 14,
                 price: '8.11'
             });
         }
@@ -142,6 +145,7 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/xxu5ma0.jpg',
                 isbn: '9780765326355',
                 pagesCount: '1009',
+                purchasesCount: 18,
                 price: '11.76'
             });
         }
@@ -158,6 +162,7 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/PkOUgGy.jpg',
                 isbn: '9780765326362',
                 pagesCount: '1088',
+                purchasesCount: 19,
                 price: '12.91'
             });
         }
@@ -174,6 +179,7 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/kBAPdwo.jpg',
                 isbn: '9780765326379',
                 pagesCount: '1220',
+                purchasesCount: 20,
                 price: '20.18'
             });
         }
@@ -270,6 +276,9 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/33fZ6pq.jpg',
                 isbn: '0452262933',
                 pagesCount: '237',
+                currentRating: 5,
+                ratingPoints: 10,
+                ratedCount: 2,
                 price: '10.87'
             });
         }
@@ -286,6 +295,9 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/1Y4OLwQ.jpg',
                 isbn: '1451673310',
                 pagesCount: '249',
+                currentRating: 4.5,
+                ratingPoints: 9,
+                ratedCount: 2,
                 price: '8.99'
             });
         }
@@ -414,6 +426,9 @@ module.exports.init = () => {
                 cover: 'https://i.imgur.com/SCLWHCl.jpg',
                 isbn: '0307474275',
                 pagesCount: '597',
+                currentRating: 4,
+                ratingPoints: 4,
+                ratedCount: 1,
                 price: '7.99'
             });
         }
