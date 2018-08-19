@@ -20,7 +20,7 @@
 
 .topnav a.active {
   background-color: #2196F3;
-  color: white;
+  color: #FFF;
 }
 
 .topnav .search-container {
@@ -32,7 +32,7 @@
   padding: 8px 10px;
   margin-top: 8px;
   margin-right: 16px;
-  background: #ddd;
+  background: #DDD;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -47,7 +47,7 @@
 }
 
 .topnav .search-container button:hover {
-  background: #ccc;
+  background: #CCC;
 }
 
 .menu-item-right {
@@ -73,6 +73,6 @@
     padding: 14px;
   }
   .topnav input[type=text] {
-    border: 1px solid #ccc;
+    border: 1px solid #CCC;
   }
 }
