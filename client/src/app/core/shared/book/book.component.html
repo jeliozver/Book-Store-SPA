@@ -1,3 +1,7 @@
-<p>
-  {{book.title}}
-</p>
+<div class="book-card">
+  <img src="{{book.cover}}" alt="book-cover">
+  <h5>{{book.title}}</h5>
+  <h6>{{book.autor}}</h6>
+  <p>{{book.price}} &#36;</p>
+  <a class="details-btn" routerLink="/book/details/{{book._id}}">View Details</a>
+</div>
