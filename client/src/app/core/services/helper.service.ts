@@ -12,6 +12,7 @@ import decode from 'jwt-decode';
 })
 export class HelperService {
   isUserLogged = new Subject<boolean>();
+  searchQuery = new Subject<string>();
 
   saveSession(token): void {
     localStorage.setItem('token', token);

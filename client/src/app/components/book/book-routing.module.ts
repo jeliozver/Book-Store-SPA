@@ -19,11 +19,11 @@ import { IsAdminGuard } from '../../core/guards/is-admin.guard';
 const bookRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'store',
+    redirectTo: 'store/default',
     pathMatch: 'full'
   },
   {
-    path: 'store',
+    path: 'store/:query',
     component: BookStoreComponent
   },
   {

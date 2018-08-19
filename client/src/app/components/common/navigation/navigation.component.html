@@ -1,14 +1,14 @@
 <nav class="topnav">
   <a routerLink="/home">Home</a>
-  <a routerLink="/book/store">Book Store</a>
+  <a routerLink="/book/store/default">Book Store</a>
   <ng-template [ngIf]="isUserLogged()">
     <a routerLink="/book/myFavoriteBooks">My Favorite Books</a>
     <a *ngIf="isUserAdmin()" routerLink="/book/create">Create Book</a>
   </ng-template>
   <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="title, author, genre, ISBN..." name="search" />
-      <button type="submit"><i class="fa fa-search"></i></button>
+    <form #formDir="ngForm" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <input type="text" name="query" placeholder="title, author, genre, ISBN..." formControlName="query" />
+      <button type="submit" [disabled]="searchForm.invalid"><i class="fa fa-search"></i></button>
     </form>
   </div>
   <div>
