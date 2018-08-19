@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MyCommonModule } from './components/common/my-common.module';
+import { SharedModule } from './core/shared/shared.module';
 import { AppRoutingModule } from './app.routing.module';
 
 // Components
@@ -31,6 +32,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
       newestOnTop: false
     }),
     MyCommonModule,
+    SharedModule,
     AppRoutingModule,
   ],
   providers: [

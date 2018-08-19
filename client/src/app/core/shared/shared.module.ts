@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 // Components
 import { CommentComponent } from './comment/comment.component';
 import { CartComponent } from './cart/cart.component';
+import { BookComponent } from './book/book.component';
 
 // Directives
 import { MustMatchDirective } from './must-match.directive';
@@ -14,6 +15,7 @@ import { IsIsbnDirective } from './is-isbn.directive';
   declarations: [
     CommentComponent,
     CartComponent,
+    BookComponent,
     MustMatchDirective,
     IsUrlDirective,
     IsIsbnDirective
@@ -21,6 +23,7 @@ import { IsIsbnDirective } from './is-isbn.directive';
   exports: [
     CommentComponent,
     CartComponent,
+    BookComponent,
     MustMatchDirective,
     IsUrlDirective,
     IsIsbnDirective

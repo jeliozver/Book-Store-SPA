@@ -2,7 +2,7 @@
 import { Component, Input } from '@angular/core';
 
 // Models
-import { Book } from '../../../core/models/book.model';
+import { Book } from '../../models/book.model';
 
 @Component({
   selector: 'app-book',
