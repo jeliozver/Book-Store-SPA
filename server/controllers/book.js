@@ -2,6 +2,8 @@ const VALIDATOR = require('validator');
 const BOOK = require('mongoose').model('Book');
 const USER = require('mongoose').model('User');
 
+const PAGE_LIMIT = 15;
+
 function validateBookForm(payload) {
     let errors = {};
     let isFormValid = true;
@@ -267,26 +269,14 @@ module.exports = {
         let params = req.query;
         let searchParams = {
             query: {},
-            sort: null,
+            sort: { creationDate: -1 },
             skip: null,
-            limit: null,
+            limit: PAGE_LIMIT,
         };
 
-        if (params.query) {
-            params.query = JSON.parse(params.query);
-
-            for (let q in params.query) {
-                if (params.query.hasOwnProperty(q)) {
-                    if (typeof params.query[q] === 'string') {
-                        searchParams.query[q] = {
-                            '$regex': `${params.query[q].toLowerCase()}`,
-                            '$options': 'i'
-                        };
-                    } else {
-                        searchParams.query[q] = params.query[q];
-                    }
-                }
-            }
+        if (params.query || typeof params.query === 'string') {
+            let query = JSON.parse(params.query);
+            searchParams.query = { $text: { $search: query, $language: 'en' } };
         }
 
         if (params.sort) {
