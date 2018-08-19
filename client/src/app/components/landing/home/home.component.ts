@@ -10,9 +10,9 @@ import { BookService } from '../../../core/services/book.service';
 // Models
 import { Book } from '../../../core/models/book.model';
 
-const newestBooksQuery = '?sort={"creationDate":-1}&limit=6';
-const bestRatedBooksQuery = '?sort={"currentRating":-1}&limit=6';
-const mostPurchasedBooksQuery = '?sort={"purchasesCount":-1}&limit=6';
+const newestBooksQuery = '?sort={"creationDate":-1}&limit=5';
+const bestRatedBooksQuery = '?sort={"currentRating":-1}&limit=5';
+const mostPurchasedBooksQuery = '?sort={"purchasesCount":-1}&limit=5';
 
 @Component({
   selector: 'app-home',
