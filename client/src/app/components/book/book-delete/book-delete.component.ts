@@ -73,7 +73,9 @@ export class BookDeleteComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.deleteBookSub$ = this.bookService
       .deleteBook(this.id)
-      .subscribe();
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
   }
 
 }

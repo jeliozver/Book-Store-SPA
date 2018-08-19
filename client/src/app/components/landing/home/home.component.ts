@@ -1,12 +1,14 @@
 // Decorators and Lifehooks
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
+// RXJS
+import { Subscription } from 'rxjs';
+
 // Services
 import { BookService } from '../../../core/services/book.service';
 
 // Models
 import { Book } from '../../../core/models/book.model';
-import { Subscription } from 'rxjs';
 
 const newestBooksQuery = '?sort={"creationDate":-1}&limit=6';
 const bestRatedBooksQuery = '?sort={"currentRating":-1}&limit=6';
