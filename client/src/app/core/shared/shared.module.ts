@@ -1,6 +1,9 @@
 // Decorators
 import { NgModule } from '@angular/core';
 
+// Modules
+import { RouterModule } from '@angular/router';
+
 // Components
 import { CommentComponent } from './comment/comment.component';
 import { CartComponent } from './cart/cart.component';
@@ -19,6 +22,9 @@ import { IsIsbnDirective } from './is-isbn.directive';
     MustMatchDirective,
     IsUrlDirective,
     IsIsbnDirective
+  ],
+  imports: [
+    RouterModule
   ],
   exports: [
     CommentComponent,
