@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css?family=Wendy+One');
 @import url('https://fonts.googleapis.com/css?family=Shojumaru');
 @import url('https://use.fontawesome.com/releases/v5.1.0/css/all.css');
-
 input[type='number'] {
   -moz-appearance: textfield;
 }
@@ -39,19 +38,7 @@ body {
   font-weight: bold;
 }
 
-.username,
-.email,
-.pass,
-.avatar,
-.title,
-.author,
-.cover,
-.genre,
-.year,
-.description,
-.isbn,
-.pagesCount,
-.price {
+.username, .email, .pass, .avatar, .title, .author, .cover, .genre, .year, .description, .isbn, .pagesCount, .price {
   outline: none;
   border: none;
   width: 85%;
@@ -86,18 +73,7 @@ body {
   position: relative;
 }
 
-.fa-user,
-.fa-envelope,
-.fa-unlock-alt,
-.fa-image,
-.fa-book,
-.fa-book-open,
-.fa-clipboard,
-.fa-sign-in-alt,
-.fa-pen,
-.fa-barcode,
-.fa-file-alt,
-.fa-dollar-sign {
+.fa-user, .fa-envelope, .fa-unlock-alt, .fa-image, .fa-book, .fa-book-open, .fa-clipboard, .fa-sign-in-alt, .fa-pen, .fa-barcode, .fa-file-alt, .fa-dollar-sign {
   position: absolute;
   top: 4px;
   left: 14px;
@@ -128,3 +104,42 @@ input:disabled, textarea:disabled {
 }
 
 /* Forms End */
+
+.ngx-pagination a {
+  color: #FFF !important;
+  padding: 10px !important;
+  background-color: #777;
+}
+
+.ngx-pagination li {
+  margin-left: 10px;
+}
+
+.ngx-pagination a:hover {
+  color: #000 !important;
+}
+
+.ngx-pagination span {
+  padding: 8px !important;
+}
+
+.ngx-pagination .current {
+  padding: 10px !important;
+}
+
+.pagination-previous a, .pagination-next a {
+  color: #CACACA !important;
+  background-color: transparent;
+}
+
+.pagination-previous a:hover, .pagination-next a:hover {
+  background-color: #CACACA !important;
+}
+
+.ngx-pagination .current:hover {
+  cursor: not-allowed;
+}
+
+.pagination-previous span, .pagination-next span {
+  cursor: not-allowed;
+}
