@@ -3,6 +3,7 @@ export class ServerResponse<T> {
     public message: string,
     public data?: T,
     public errors?: { [key: string]: string },
-    public query?: {}
+    public query?: {},
+    public itemsCount?: number
   ) { }
 }
