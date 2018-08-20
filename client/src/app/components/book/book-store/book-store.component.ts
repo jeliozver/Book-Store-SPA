@@ -9,6 +9,10 @@ import { Subscription } from 'rxjs';
 
 // Services
 import { HelperService } from '../../../core/services/helper.service';
+import { BookService } from '../../../core/services/book.service';
+
+// Models
+import { Book } from '../../../core/models/book.model';
 
 @Component({
   selector: 'app-book-store',
@@ -16,23 +20,66 @@ import { HelperService } from '../../../core/services/helper.service';
   styleUrls: ['./book-store.component.css']
 })
 export class BookStoreComponent implements OnInit, OnDestroy {
-  query: string;
+  currentQuery: string;
+  pageSize = 15;
+  currentPage = 1;
+  total = 30;
+  maxPages = 8;
   querySub$: Subscription;
+  currentPageSub$: Subscription;
+  books: Book[];
 
   constructor(
     private route: ActivatedRoute,
+    private bookSevice: BookService,
     private helperService: HelperService
   ) { }
 
   ngOnInit(): void {
-    this.query = this.route.snapshot.paramMap.get('query');
+    this.currentQuery = this.route.snapshot.paramMap.get('query');
+    this.currentPageSub$ = this.initRequest(this.currentQuery);
 
-    this.querySub$ = this.helperService.searchQuery
-      .subscribe();
+    this.querySub$ = this.helperService
+      .searchQuery
+      .subscribe((newQuery) => {
+        this.currentQuery = newQuery;
+        this.currentPage = 1;
+        this.currentPageSub$.unsubscribe();
+        this.currentPageSub$ = this.initRequest(this.currentQuery);
+      });
   }
 
   ngOnDestroy(): void {
+    this.currentPageSub$.unsubscribe();
     this.querySub$.unsubscribe();
   }
 
+  initRequest(query: string): Subscription {
+    query = this.generateQuery(query);
+    return this.bookSevice
+      .search(query)
+      .subscribe((res) => {
+        this.total = res.itemsCount;
+        this.books = res.data;
+      });
+  }
+
+  generateQuery(query: string): string {
+    if (query === 'default') {
+      return `?sort={"creationDate":-1}`
+        + `&skip=${(this.currentPage - 1) * this.pageSize}`
+        + `&limit=${this.pageSize}`;
+    }
+
+    return `?query={"searchTerm":"${query}"}`
+      + `&sort={"creationDate":-1}`
+      + `&skip=${(this.currentPage - 1) * this.pageSize}`
+      + `&limit=${this.pageSize}`;
+  }
+
+  pageChanged(newPage: number): void {
+    this.currentPage = newPage;
+    this.currentPageSub$.unsubscribe();
+    this.currentPageSub$ = this.initRequest(this.currentQuery);
+  }
 }

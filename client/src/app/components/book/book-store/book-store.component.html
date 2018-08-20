@@ -1,3 +1,34 @@
-<p>
-  book-store works!
-</p>
+<div class="top">
+  <pagination-controls
+    (pageChange)="pageChanged($event)"
+    maxSize="{{maxPages}}"
+    directionLinks="true"
+    autoHide="true"
+    responsive="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page">
+  </pagination-controls>
+</div>
+<div *ngIf="books" class="books-store">
+  <app-book *ngFor="let book of books | paginate: {
+  itemsPerPage: pageSize,
+  currentPage: currentPage,
+  totalItems: total }" [book]="book"></app-book>
+</div>
+<div class="bottom">
+  <pagination-controls
+    (pageChange)="pageChanged($event)"
+    maxSize="{{maxPages}}"
+    directionLinks="true"
+    autoHide="true"
+    responsive="true"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page">
+  </pagination-controls>
+</div>
