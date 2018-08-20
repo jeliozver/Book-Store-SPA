@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 // Modules
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '../../core/shared/shared.module';
 import { BookRoutingModule } from './book-routing.module';
 
@@ -27,6 +28,7 @@ import { BookFavoritesComponent } from './book-favorites/book-favorites.componen
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     SharedModule,
     BookRoutingModule
   ],
