@@ -276,7 +276,7 @@ module.exports = {
 
         if (params.query || typeof params.query === 'string') {
             let query = JSON.parse(params.query);
-            searchParams.query = { $text: { $search: query, $language: 'en' } };
+            searchParams.query = { $text: { $search: query['searchTerm'], $language: 'en' } };
         }
 
         if (params.sort) {
