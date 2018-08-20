@@ -293,20 +293,27 @@ module.exports = {
 
         BOOK
             .find(searchParams.query)
-            .sort(searchParams.sort)
-            .skip(searchParams.skip)
-            .limit(searchParams.limit)
-            .then((result) => {
-                return res.status(200).json({
-                    message: '',
-                    data: result,
-                    query: searchParams
-                });
-            })
-            .catch(() => {
-                return res.status(400).json({
-                    message: 'Bad Request!'
-                });
+            .count()
+            .then((count) => {
+                BOOK
+                    .find(searchParams.query)
+                    .sort(searchParams.sort)
+                    .skip(searchParams.skip)
+                    .limit(searchParams.limit)
+                    .then((result) => {
+                        return res.status(200).json({
+                            message: '',
+                            data: result,
+                            query: searchParams,
+                            itemsCount: count
+                        });
+                    })
+                    .catch(() => {
+                        return res.status(400).json({
+                            message: 'Bad Request!'
+                        });
+                    });
             });
+
     }
 };
