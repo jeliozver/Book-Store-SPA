@@ -33,7 +33,6 @@ const bookRoutes: Routes = [
   },
   {
     path: 'details/:bookId',
-    canActivate: [IsAuthenticatedGuard],
     component: BookDetailsComponent
   },
   {
