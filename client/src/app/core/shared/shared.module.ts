@@ -14,6 +14,7 @@ import { BookComponent } from './book/book.component';
 import { MustMatchDirective } from './must-match.directive';
 import { IsUrlDirective } from './is-url.directive';
 import { IsIsbnDirective } from './is-isbn.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { IsIsbnDirective } from './is-isbn.directive';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommentComponent,

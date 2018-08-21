@@ -23,7 +23,7 @@ body {
 
 .form {
   position: relative;
-  width: 470px;
+  width: 560px;
   margin: 65px auto;
   padding: 50px 60px 70px 60px;
   background-color: #D5C395;
@@ -41,7 +41,7 @@ body {
 .username, .email, .pass, .avatar, .title, .author, .cover, .genre, .year, .description, .isbn, .pagesCount, .price {
   outline: none;
   border: none;
-  width: 85%;
+  width: 100%;
   padding: 10px 10px 10px 60px;
   margin-bottom: 30px;
   border-radius: 5px;
@@ -142,4 +142,9 @@ input:disabled, textarea:disabled {
 
 .pagination-previous span, .pagination-next span {
   cursor: not-allowed;
+}
+
+.commentModal div {
+  color: #000;
+  text-align: left;
 }

@@ -1,5 +1,27 @@
 <div *ngIf="comments">
   <div *ngFor="let c of comments">
     <p>{{c.content}}</p>
+    <button type="button" class="btn btn-primary" (click)="openModal(template, c._id)">Create template modal</button>
   </div>
 </div>
+
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Comment</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #formDir="ngForm" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="content"></textarea>
+        <div class="test">
+          <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

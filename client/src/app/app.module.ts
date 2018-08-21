@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MyCommonModule } from './components/common/my-common.module';
 import { SharedModule } from './core/shared/shared.module';
 import { AppRoutingModule } from './app.routing.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // Components
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     ToastrModule.forRoot({
       newestOnTop: false
     }),
+    ModalModule.forRoot(),
     MyCommonModule,
     SharedModule,
     AppRoutingModule,

@@ -39,8 +39,11 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       .getSingleBook(this.bookId)
       .subscribe((res) => {
         this.book = res.data;
-        console.log(this.book);
       });
+  }
+
+  test() {
+
   }
 
   ngOnDestroy(): void {
