@@ -10,7 +10,7 @@ function validateCommentForm(payload) {
 
     if (!payload || typeof payload.content !== 'string' || payload.content.trim().length < 3) {
         isFormValid = false;
-        errors.email = 'Comment must be more than 3 symbols long.';
+        errors.content = 'Comment must be more than 3 symbols long.';
     }
 
     return {
@@ -85,7 +85,8 @@ module.exports = {
                     newComment.save();
 
                     return res.status(200).json({
-                        message: 'Comment posted successfully!'
+                        message: 'Comment posted successfully!',
+                        data: newComment
                     });
                 }).catch((err) => {
                     console.log(err);
@@ -125,7 +126,7 @@ module.exports = {
                     });
                 }
 
-                if (comment.user.toString() !== userId) {
+                if (comment.user.toString() !== userId && !req.user.isAdmin) {
                     return res.status(400).json({
                         message: 'You\'re not allowed to edit other user comments!'
                     });
@@ -135,7 +136,8 @@ module.exports = {
                 comment.save();
 
                 return res.status(200).json({
-                    message: 'Comment edited successfully!'
+                    message: 'Comment edited successfully!',
+                    data: comment
                 });
             }).catch((err) => {
                 console.log(err);
@@ -157,7 +159,7 @@ module.exports = {
                 });
             }
 
-            if (comment.user.toString() !== userId) {
+            if (comment.user.toString() !== userId && !req.user.isAdmin) {
                 return res.status(400).json({
                     message: 'You\'re not allowed to delete other user comments!'
                 });
