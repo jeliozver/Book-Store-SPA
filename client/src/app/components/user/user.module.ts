@@ -9,11 +9,13 @@ import { UserRoutingModule } from './user.routing.module';
 // Components
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

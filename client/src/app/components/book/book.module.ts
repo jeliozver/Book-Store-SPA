@@ -14,7 +14,6 @@ import { BookEditComponent } from './book-edit/book-edit.component';
 import { BookDeleteComponent } from './book-delete/book-delete.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookStoreComponent } from './book-store/book-store.component';
-import { BookFavoritesComponent } from './book-favorites/book-favorites.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +21,7 @@ import { BookFavoritesComponent } from './book-favorites/book-favorites.componen
     BookEditComponent,
     BookDeleteComponent,
     BookDetailsComponent,
-    BookStoreComponent,
-    BookFavoritesComponent
+    BookStoreComponent
   ],
   imports: [
     CommonModule,

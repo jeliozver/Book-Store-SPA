@@ -2,7 +2,7 @@
   <a routerLink="/home">Home</a>
   <a routerLink="/book/store/default">Book Store</a>
   <ng-template [ngIf]="isUserLogged()">
-    <a routerLink="/book/myFavoriteBooks">My Favorite Books</a>
+    <a routerLink="/user/profile/{{username}}">My Profile</a>
     <a *ngIf="isUserAdmin()" routerLink="/book/create">Create Book</a>
   </ng-template>
   <div class="search-container">

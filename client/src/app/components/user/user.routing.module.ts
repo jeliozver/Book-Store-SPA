@@ -7,15 +7,22 @@ import { RouterModule, Routes } from '@angular/router';
 // Components
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // Guards
 import { IsAnonymousGuard } from '../../core/guards/is-anonymous.guard';
+import { IsAuthenticatedGuard } from '../../core/guards/is-authenticated.guard';
 
 const userRoutes: Routes = [
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'profile/:username',
+    canActivate: [IsAuthenticatedGuard],
+    component: ProfileComponent
   },
   {
     path: 'register',

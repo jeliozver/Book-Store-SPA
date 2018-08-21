@@ -7,13 +7,9 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 // Components
 import { HomeComponent } from './components/landing/home/home.component';
 
-// Guards
-import { IsAnonymousGuard } from './core/guards/is-anonymous.guard';
-
 const routes: Routes = [
   {
     path: 'user',
-    canLoad: [IsAnonymousGuard],
     loadChildren: './components/user/user.module#UserModule'
   },
   {
