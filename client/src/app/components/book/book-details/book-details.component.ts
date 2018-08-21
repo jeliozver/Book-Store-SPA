@@ -42,10 +42,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  test() {
-
-  }
-
   ngOnDestroy(): void {
     this.bookSub$.unsubscribe();
   }

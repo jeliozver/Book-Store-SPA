@@ -9,7 +9,7 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Add Comment</h4>
+    <h4 class="modal-title pull-left">Add/Edit Comment</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -17,7 +17,7 @@
   <div class="modal-body">
     <form #formDir="ngForm" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="content"></textarea>
+        <textarea class="form-control" name="content" cols="30" rows="10" formControlName="content"></textarea>
         <div class="test">
           <button type="submit" class="btn btn-primary" (click)="modalRef.hide()">Submit</button>
         </div>

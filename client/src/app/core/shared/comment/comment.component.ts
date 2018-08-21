@@ -63,6 +63,7 @@ export class CommentComponent implements OnInit, OnDestroy {
       this.commentForm.patchValue({ content: content });
     } else {
       this.isFromEdit = false;
+      this.commentForm.patchValue({ content: '' });
     }
 
     this.modalRef = this.modalService.show(
