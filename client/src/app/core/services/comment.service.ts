@@ -1,10 +1,41 @@
 // Decorators
 import { Injectable } from '@angular/core';
 
+// RXJS
+import { Observable } from 'rxjs';
+
+// HTTP
+import { HttpClient } from '@angular/common/http';
+
+// Models
+import { ServerResponse } from '../models/server-response.model';
+import { Comment } from '../models/comment.model';
+
+const baseUrl = 'http://localhost:8000/comment';
+const addCommentEndpoint = '/add/';
+const editCommentEndpoint = '/edit/';
+const deleteCommentEndpoint = '/delete/';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getComments(query: string): Observable<ServerResponse<Comment[]>> {
+    return this.http.get<ServerResponse<Comment[]>>(baseUrl + query);
+  }
+
+  addComment(id: string, payload: Comment): Observable<ServerResponse<Comment>> {
+    return this.http.post<ServerResponse<Comment>>(baseUrl + addCommentEndpoint + id, payload);
+  }
+
+  editComment(id: string, payload: Comment): Observable<ServerResponse<Comment>> {
+    return this.http.put<ServerResponse<Comment>>(baseUrl + editCommentEndpoint + id, payload);
+  }
+
+  deleteComment(id: string): Observable<ServerResponse<object>> {
+    return this.http.delete<ServerResponse<object>>(baseUrl + deleteCommentEndpoint + id);
+  }
 }
