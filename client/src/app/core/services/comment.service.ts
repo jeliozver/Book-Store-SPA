@@ -23,8 +23,8 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-  getComments(query: string): Observable<ServerResponse<Comment[]>> {
-    return this.http.get<ServerResponse<Comment[]>>(baseUrl + query);
+  getComments(id: string, page: string): Observable<ServerResponse<Comment[]>> {
+    return this.http.get<ServerResponse<Comment[]>>(`${baseUrl}/${id}/${page}`);
   }
 
   addComment(id: string, payload: Comment): Observable<ServerResponse<Comment>> {

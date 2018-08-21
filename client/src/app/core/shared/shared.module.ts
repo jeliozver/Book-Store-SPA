@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 
 // Modules
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 // Components
@@ -24,6 +25,7 @@ import { IsIsbnDirective } from './is-isbn.directive';
     IsIsbnDirective
   ],
   imports: [
+    CommonModule,
     RouterModule
   ],
   exports: [
