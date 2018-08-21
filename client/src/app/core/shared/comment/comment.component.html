@@ -1,3 +1,5 @@
-<p>
-  comment works!
-</p>
+<div *ngIf="comments">
+  <div *ngFor="let c of comments">
+    <p>{{c.content}}</p>
+  </div>
+</div>
