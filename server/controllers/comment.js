@@ -2,6 +2,8 @@ const COMMENT = require('mongoose').model('Comment');
 const BOOK = require('mongoose').model('Book');
 const USER = require('mongoose').model('User');
 
+const PAGE_LIMIT = 5;
+
 function validateCommentForm(payload) {
     let errors = {};
     let isFormValid = true;
@@ -18,6 +20,32 @@ function validateCommentForm(payload) {
 }
 
 module.exports = {
+    getComments: (req, res) => {
+        let bookId = req.params.bookId;
+        let page = !isNaN(Number(req.params.page))
+            ? Number(req.params.page)
+            : 0;
+
+        COMMENT
+            .find({ book: bookId })
+            .populate({ path: 'user', select: 'username' })
+            .sort({ creationDate: -1 })
+            .skip(page * PAGE_LIMIT)
+            .limit(PAGE_LIMIT)
+            .then((comments) => {
+                res.status(200).json({
+                    message: '',
+                    data: comments
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                return res.status(400).json({
+                    message: 'Something went wrong, please try again.'
+                });
+            });
+    },
+
     add: (req, res) => {
         let bookId = req.params.bookId;
         let userId = req.user.id;

@@ -25,6 +25,7 @@ module.exports = (APP) => {
     APP.post('/book/rate/:bookId', AUTH.isAuth, BOOK_CONTROLLER.rate);
     APP.post('/book/addToFavorites/:bookId', AUTH.isAuth, BOOK_CONTROLLER.addToFavorites);
     
+    APP.get('/comment/:bookId/:page', COMMENT_CONTROLLER.getComments);
     APP.post('/comment/add/:bookId', AUTH.isAuth, COMMENT_CONTROLLER.add);
     APP.put('/comment/edit/:commentId', AUTH.isAuth, COMMENT_CONTROLLER.edit);
     APP.delete('/comment/delete/:commentId', AUTH.isAuth, COMMENT_CONTROLLER.delete);

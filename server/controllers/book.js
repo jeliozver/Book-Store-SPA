@@ -85,13 +85,6 @@ module.exports = {
         let bookId = req.params.bookId;
 
         BOOK.findById(bookId)
-            .populate({
-                path: 'comments',
-                options: {
-                    populate: { path: 'user', select: 'username' },
-                    sort: { 'creationDate': -1 }
-                }
-            })
             .then((book) => {
                 if (!book) {
                     return res.status(400).json({
