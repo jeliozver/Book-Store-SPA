@@ -87,7 +87,6 @@ export class CommentComponent implements OnInit, OnDestroy {
   }
 
   loadMoreComments(): void {
-    console.log('here');
     this.commentService
       .getComments(this.bookId, this.comments.length.toString())
       .subscribe((res) => {

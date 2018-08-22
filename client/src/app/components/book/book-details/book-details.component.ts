@@ -1,11 +1,8 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Router
 import { ActivatedRoute } from '@angular/router';
-
-// RXJS
-import { Subscription } from 'rxjs';
 
 // Services
 import { BookService } from '../../../core/services/book.service';
@@ -20,7 +17,7 @@ import { Book } from '../../../core/models/book.model';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
-export class BookDetailsComponent implements OnInit, OnDestroy {
+export class BookDetailsComponent implements OnInit {
   book: Book;
   bookId: string;
 
@@ -41,7 +38,12 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
+  buyBook(): void {
+    this.cartService
+      .addToCart(this.bookId)
+      .subscribe(() => {
+        this.helperService.cartStatus.next('add');
+      });
   }
 
 }
