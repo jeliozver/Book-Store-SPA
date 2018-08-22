@@ -1,5 +1,25 @@
-<p>
-  book-details works!
-</p>
-<button class="btn btn-primary" (click)="buyBook()">Buy Book</button>
+<div *ngIf="book" class="row book-details">
+  <div class="col-1">
+    <img src="{{book.cover}}" alt="book-cover" />
+  </div>
+  <div class="col-7 book-info">
+    <h3>{{book.title}}</h3>
+    <span class="fa fa-star {{stars[0]}}" (click)="rateBook(1)" (mouseenter)="calcRating(1)" (mouseleave)="resetRating()"></span>
+    <span class="fa fa-star {{stars[1]}}" (click)="rateBook(2)" (mouseenter)="calcRating(2)" (mouseleave)="resetRating()"></span>
+    <span class="fa fa-star {{stars[2]}}" (click)="rateBook(3)" (mouseenter)="calcRating(3)" (mouseleave)="resetRating()"></span>
+    <span class="fa fa-star {{stars[3]}}" (click)="rateBook(4)" (mouseenter)="calcRating(4)" (mouseleave)="resetRating()"></span>
+    <span class="fa fa-star {{stars[4]}}" (click)="rateBook(5)" (mouseenter)="calcRating(5)" (mouseleave)="resetRating()"></span>
+    <p>based on {{book.ratedCount}} ratings</p>
+    <p>{{book.comments.length}} comments</p>
+    <p>Author: {{book.author}}</p>
+    <p>Genre: {{book.genre}}</p>
+    <p>Relsease Year: {{book.year}}</p>
+    <p>ISBN: {{book.isbn}}</p>
+    <p>Pages: {{book.pagesCount}}</p>
+    <p class="book-description">Description: {{book.description}}</p>
+    <h2>Price: {{book.price}} &#x24;</h2>
+    <button class="btn btn-success" (click)="buyBook()">Buy Book</button>
+    <button class="btn btn-primary" (click)="addToFavorites()">Add to favourites</button>
+  </div>
+</div>
 <app-comment [bookId]="bookId"></app-comment>

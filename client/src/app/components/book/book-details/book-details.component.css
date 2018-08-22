@@ -1,0 +1,34 @@
+.book-details {
+  width: 100%;
+}
+
+.book-details img {
+  border-radius: 5px;
+}
+
+.book-info {
+  padding: 30px;
+  background-color: #313532;
+  border-radius: 15px;
+}
+
+.book-info a {
+  text-decoration: none;
+}
+
+.book-info button {
+  margin: 10px 10px 10px 0;
+}
+
+.book-description {
+  text-align: justify;
+}
+
+.book-details div {
+  margin: 50px auto;
+  text-align: left;
+}
+
+.checked {
+  color: orange;
+}
