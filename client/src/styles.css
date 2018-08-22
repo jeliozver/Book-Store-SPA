@@ -115,6 +115,10 @@ input:disabled, textarea:disabled {
   margin-left: 10px;
 }
 
+.ngx-pagination a {
+  text-decoration: none;
+}
+
 .ngx-pagination a:hover {
   color: #000 !important;
 }
