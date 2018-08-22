@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServerResponse } from '../models/server-response.model';
 
 const baseUrl = 'http://localhost:8000/user/cart';
+const getCartSizeEndpoint = 'http://localhost:8000/cart/getSize';
 const addToCartEndpoint = '/add/';
 const removeFromCartEndpoint = '/delete/';
 const checkoutEndpoint = '/checkout';
@@ -21,6 +22,10 @@ const checkoutEndpoint = '/checkout';
 export class CartService {
 
   constructor(private http: HttpClient) { }
+
+  getCartSize(): Observable<ServerResponse<number>> {
+    return this.http.get<ServerResponse<number>>(getCartSizeEndpoint);
+  }
 
   getCart(): Observable<ServerResponse<object>> {
     return this.http.get<ServerResponse<object>>(baseUrl);

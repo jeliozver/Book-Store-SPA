@@ -41,6 +41,7 @@ export class SuccessInterceptor implements HttpInterceptor {
               event instanceof HttpResponse && request.url.endsWith('register')) {
               this.helperService.saveSession(event.body.data);
               this.helperService.isUserLogged.next(true);
+              this.helperService.cartStatus.next('updateStatus');
             }
           }
         )

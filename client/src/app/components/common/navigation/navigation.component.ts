@@ -2,7 +2,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Forms
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Router
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 
 // Services
 import { HelperService } from '../../../core/services/helper.service';
+import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-navigation',
@@ -21,35 +22,56 @@ import { HelperService } from '../../../core/services/helper.service';
 export class NavigationComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   isLoggedSub$: Subscription;
+  cartStatusSub$: Subscription;
   username: string;
   isLogged: boolean;
   isAdmin: boolean;
   statusChecker: number;
-  cartItems = 0;
+  cartItems: number;
 
   constructor(
     private router: Router,
-    private helperService: HelperService
+    private helperService: HelperService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
-    this.searchForm = new FormGroup({
-      'query': new FormControl('', [
-        Validators.required
-      ])
-    });
     this.statusChecker = window.setInterval(() => this.tick(), 600000);
+    this.isLogged = this.helperService.isLoggedIn();
+    this.initForm();
+    this.getCartSize();
+
     this.isLoggedSub$ = this.helperService
       .isUserLogged
       .subscribe((data) => {
         this.isLogged = data;
       });
-    this.isLogged = this.helperService.isLoggedIn();
+
+    this.cartStatusSub$ = this.helperService
+      .cartStatus
+      .subscribe((data) => {
+        if (data === 'add') {
+          this.cartItems++;
+        } else if (data === 'remove') {
+          this.cartItems--;
+        } else if (data === 'updateStatus') {
+          this.getCartSize();
+        }
+      });
   }
 
   ngOnDestroy(): void {
     window.clearInterval(this.statusChecker);
     this.isLoggedSub$.unsubscribe();
+    this.cartStatusSub$.unsubscribe();
+  }
+
+  initForm(): void {
+    this.searchForm = new FormGroup({
+      'query': new FormControl('', [
+        Validators.required
+      ])
+    });
   }
 
   onSubmit(): void {
@@ -82,9 +104,18 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
+  getCartSize(): void {
+    this.cartService
+      .getCartSize()
+      .subscribe((res) => {
+        this.cartItems = res.data;
+      });
+  }
+
   logout(): void {
     this.username = undefined;
     this.isAdmin = undefined;
+    this.cartItems = 0;
     this.helperService.clearSession();
     this.helperService.isUserLogged.next(false);
   }
