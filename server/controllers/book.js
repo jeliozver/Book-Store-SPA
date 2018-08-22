@@ -198,6 +198,7 @@ module.exports = {
     rate: (req, res) => {
         let bookId = req.params.bookId;
         let rating = req.body.rating;
+        let userId = req.user.id;
 
         let validationResult = validateRatingForm(req.body);
 
@@ -215,6 +216,14 @@ module.exports = {
                 });
             }
 
+            let ratedByIds = book.ratedBy.map((id) => id.toString());
+            if (ratedByIds.indexOf(userId) !== -1) {
+                return res.status(400).json({
+                    message: 'You already rated this book'
+                });
+            }
+
+            book.ratedBy.push(userId);
             book.ratingPoints += rating;
             book.ratedCount += 1;
             book.currentRating = book.ratingPoints / book.ratedCount;
@@ -243,6 +252,14 @@ module.exports = {
             }
 
             USER.findById(req.user.id).then((user) => {
+
+                let booksIds = user.favoriteBooks.map((b) => b.toString());
+                if (booksIds.indexOf(bookId) !== -1) {
+                    return res.status(400).json({
+                        message: 'You already have this book in your favorites list'
+                    });
+                }
+
                 user.favoriteBooks.push(book._id);
                 user.save();
 

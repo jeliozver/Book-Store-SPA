@@ -19,6 +19,7 @@ const BOOK_SCHEMA = MONGOOSE.Schema({
     currentRating: { type: NUMBER, default: 0 },
     ratingPoints: { type: NUMBER, default: 0 },
     ratedCount: { type: NUMBER, default: 0 },
+    ratedBy: [{ type: OBJECT_ID, ref: 'User' }],
     purchasesCount: { type: NUMBER, default: 0 },
     comments: [{ type: OBJECT_ID, ref: 'Comment' }]
 });

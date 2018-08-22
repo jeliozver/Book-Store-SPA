@@ -166,7 +166,7 @@ module.exports = {
             }
 
             COMMENT.findByIdAndRemove(comment._id).then(() => {
-                BOOK.update({ _id: comment.book }, { $pull: { comment: comment._id } }).then(() => {
+                BOOK.update({ _id: comment.book }, { $pull: { comments: comment._id } }).then(() => {
                     USER.findById(req.user.id).then((user) => {
                         user.commentsCount -= 1;
                         user.save();
