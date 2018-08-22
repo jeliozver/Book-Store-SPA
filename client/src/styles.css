@@ -144,7 +144,11 @@ input:disabled, textarea:disabled {
   cursor: not-allowed;
 }
 
-.commentModal div {
+.myModal div {
   color: #000;
   text-align: left;
+}
+
+.myModal button {
+  margin-left: 10px;
 }

@@ -22,15 +22,15 @@ function validateCommentForm(payload) {
 module.exports = {
     getComments: (req, res) => {
         let bookId = req.params.bookId;
-        let page = !isNaN(Number(req.params.page))
-            ? Number(req.params.page)
+        let skipCount = !isNaN(Number(req.params.skipCount))
+            ? Number(req.params.skipCount)
             : 0;
 
         COMMENT
             .find({ book: bookId })
             .populate({ path: 'user', select: 'username' })
             .sort({ creationDate: -1 })
-            .skip(page * PAGE_LIMIT)
+            .skip(skipCount)
             .limit(PAGE_LIMIT)
             .then((comments) => {
                 res.status(200).json({
