@@ -8,7 +8,7 @@ import { CommentService } from '../../services/comment.service';
 
 // Models
 import { Comment } from '../../models/comment.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-comment',
@@ -17,12 +17,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CommentComponent implements OnInit, OnDestroy {
   @Input('bookId') bookId: string;
-  comments: Comment[];
+  comments: Comment[] = [];
   commentForm: FormGroup;
-  modalRef: BsModalRef;
+  commentModalRef: BsModalRef;
+  removeModalRef: BsModalRef;
   isFromEdit: boolean;
   lastEditId: string;
-  currentPage = 1;
+  lastDeleteId: string;
+  action: string;
 
   constructor(
     private commentService: CommentService,
@@ -31,10 +33,10 @@ export class CommentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.commentForm = new FormGroup({
-      'content': new FormControl('')
+      'content': new FormControl('', Validators.required)
     });
     this.commentService
-      .getComments(this.bookId, (this.currentPage - 1).toString())
+      .getComments(this.bookId, this.comments.length.toString())
       .subscribe((res) => {
         this.comments = res.data;
       });
@@ -43,7 +45,7 @@ export class CommentComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
 
-  openModal(template: TemplateRef<any>, id?: string): void {
+  openFormModal(template: TemplateRef<any>, id?: string): void {
     if (id) {
       let content = '';
       this.isFromEdit = true;
@@ -54,16 +56,25 @@ export class CommentComponent implements OnInit, OnDestroy {
           break;
         }
       }
-
+      this.action = 'Edit';
       this.commentForm.patchValue({ content: content });
     } else {
+      this.action = 'Create';
       this.isFromEdit = false;
       this.commentForm.patchValue({ content: '' });
     }
 
-    this.modalRef = this.modalService.show(
+    this.commentModalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: 'commentModal' })
+      { class: 'myModal' }
+    );
+  }
+
+  openRemoveModal(template: TemplateRef<any>, id: string): void {
+    this.lastDeleteId = id;
+    this.removeModalRef = this.modalService.show(
+      template,
+      { class: 'myModal modal-sm' }
     );
   }
 
@@ -75,15 +86,28 @@ export class CommentComponent implements OnInit, OnDestroy {
     }
   }
 
-  createComment() {
+  loadMoreComments(): void {
+    console.log('here');
+    this.commentService
+      .getComments(this.bookId, this.comments.length.toString())
+      .subscribe((res) => {
+        if (res.data.length !== 0) {
+          this.comments.splice(this.comments.length, 0, ...res.data);
+        }
+      });
+  }
+
+  createComment(): void {
     this.commentService
       .addComment(this.bookId, this.commentForm.value)
       .subscribe((res) => {
         this.comments.unshift(res.data);
       });
+
+    this.commentForm.reset();
   }
 
-  modifyComment() {
+  modifyComment(): void {
     const editedContent = this.commentForm.value.content;
     this.commentService
       .editComment(this.lastEditId, this.commentForm.value)
@@ -95,14 +119,18 @@ export class CommentComponent implements OnInit, OnDestroy {
           }
         }
       });
+
+    this.commentForm.reset();
   }
 
-  removeComment() {
-
-  }
-
-  get content() {
-    return this.commentForm.get('content');
+  removeComment(): void {
+    this.removeModalRef.hide();
+    const delId = this.lastDeleteId;
+    this.commentService
+      .deleteComment(this.lastDeleteId)
+      .subscribe(() => {
+        this.comments = this.comments.filter(c => c._id !== delId);
+      });
   }
 
 }
