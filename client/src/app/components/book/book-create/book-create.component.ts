@@ -1,14 +1,11 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Forms
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 // Router
 import { Router } from '@angular/router';
-
-// RXJS
-import { Subscription } from 'rxjs';
 
 // Services
 import { BookService } from '../../../core/services/book.service';
@@ -22,9 +19,8 @@ import { isIsbnValidator } from '../../../core/shared/is-isbn.directive';
   templateUrl: './book-create.component.html',
   styleUrls: ['./book-create.component.css']
 })
-export class BookCreateComponent implements OnInit, OnDestroy {
+export class BookCreateComponent implements OnInit {
   createBookForm: FormGroup;
-  createBookSub$: Subscription;
 
   constructor(
     private router: Router,
@@ -68,14 +64,8 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.createBookSub$) {
-      this.createBookSub$.unsubscribe();
-    }
-  }
-
   onSubmit(): void {
-    this.createBookSub$ = this.bookService
+    this.bookService
       .createBook(this.createBookForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);

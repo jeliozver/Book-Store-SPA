@@ -21,7 +21,6 @@ import { Book } from '../../../core/models/book.model';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit, OnDestroy {
-  bookSub$: Subscription;
   book: Book;
   bookId: string;
 
@@ -35,7 +34,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('bookId');
 
-    this.bookSub$ = this.bookService
+    this.bookService
       .getSingleBook(this.bookId)
       .subscribe((res) => {
         this.book = res.data;
@@ -43,7 +42,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.bookSub$.unsubscribe();
   }
 
 }

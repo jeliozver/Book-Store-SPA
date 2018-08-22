@@ -1,8 +1,5 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
-// RXJS
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 // Services
 import { BookService } from '../../../core/services/book.service';
@@ -19,10 +16,7 @@ const mostPurchasedBooksQuery = '?sort={"purchasesCount":-1}&limit=5';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  newestSub$: Subscription;
-  bestRatedSub$: Subscription;
-  mostPurchasedSub$: Subscription;
+export class HomeComponent implements OnInit {
   newestBooks: Book[];
   bestRatedBooks: Book[];
   mostPurchasedBooks: Book[];
@@ -30,29 +24,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-    this.newestSub$ = this.bookService
+    this.bookService
       .search(newestBooksQuery)
       .subscribe((res) => {
         this.newestBooks = res.data;
       });
 
-    this.bestRatedSub$ = this.bookService
+    this.bookService
       .search(bestRatedBooksQuery)
       .subscribe((res) => {
         this.bestRatedBooks = res.data;
       });
 
-    this.mostPurchasedSub$ = this.bookService
+    this.bookService
       .search(mostPurchasedBooksQuery)
       .subscribe((res) => {
         this.mostPurchasedBooks = res.data;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.newestSub$.unsubscribe();
-    this.bestRatedSub$.unsubscribe();
-    this.mostPurchasedSub$.unsubscribe();
   }
 
 }

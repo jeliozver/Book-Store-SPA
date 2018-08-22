@@ -1,14 +1,11 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Forms
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 // Router
 import { Router, ActivatedRoute } from '@angular/router';
-
-// RXJS
-import { Subscription } from 'rxjs';
 
 // Services
 import { BookService } from '../../../core/services/book.service';
@@ -22,10 +19,8 @@ import { isIsbnValidator } from '../../../core/shared/is-isbn.directive';
   templateUrl: './book-edit.component.html',
   styleUrls: ['./book-edit.component.css']
 })
-export class BookEditComponent implements OnInit, OnDestroy {
+export class BookEditComponent implements OnInit {
   editBookForm: FormGroup;
-  editBookSub$: Subscription;
-  bookSub$: Subscription;
   id: string;
 
   constructor(
@@ -38,7 +33,7 @@ export class BookEditComponent implements OnInit, OnDestroy {
     this.initForm();
     this.id = this.route.snapshot.paramMap.get('bookId');
 
-    this.bookSub$ = this.bookService
+    this.bookService
       .getSingleBook(this.id)
       .subscribe((res) => {
         this.editBookForm.patchValue({ ...res.data });
@@ -82,15 +77,8 @@ export class BookEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.bookSub$.unsubscribe();
-    if (this.editBookSub$) {
-      this.editBookSub$.unsubscribe();
-    }
-  }
-
   onSubmit(): void {
-    this.editBookSub$ = this.bookService
+    this.bookService
       .editBook(this.id, this.editBookForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);

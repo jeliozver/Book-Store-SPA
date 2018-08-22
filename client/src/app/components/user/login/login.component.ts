@@ -1,14 +1,11 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Forms
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 // Router
 import { Router } from '@angular/router';
-
-// RXJS
-import { Subscription } from 'rxjs';
 
 // Services
 import { UserService } from '../../../core/services/user.service';
@@ -18,9 +15,8 @@ import { UserService } from '../../../core/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loginSub$: Subscription;
 
   constructor(
     private userService: UserService,
@@ -40,14 +36,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.loginSub$) {
-      this.loginSub$.unsubscribe();
-    }
-  }
-
   onSubmit(): void {
-    this.loginSub$ = this.userService
+    this.userService
       .login(this.loginForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);

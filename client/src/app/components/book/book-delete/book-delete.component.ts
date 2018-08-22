@@ -1,14 +1,11 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Forms
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Router
 import { Router, ActivatedRoute } from '@angular/router';
-
-// RXJS
-import { Subscription } from 'rxjs';
 
 // Services
 import { BookService } from '../../../core/services/book.service';
@@ -18,10 +15,8 @@ import { BookService } from '../../../core/services/book.service';
   templateUrl: './book-delete.component.html',
   styleUrls: ['./book-delete.component.css']
 })
-export class BookDeleteComponent implements OnInit, OnDestroy {
+export class BookDeleteComponent implements OnInit {
   deleteBookForm: FormGroup;
-  deleteBookSub$: Subscription;
-  bookSub$: Subscription;
   id: string;
 
   constructor(
@@ -34,18 +29,11 @@ export class BookDeleteComponent implements OnInit, OnDestroy {
     this.initForm();
     this.id = this.route.snapshot.paramMap.get('bookId');
 
-    this.bookSub$ = this.bookService
+    this.bookService
       .getSingleBook(this.id)
       .subscribe((res) => {
         this.deleteBookForm.patchValue({ ...res.data });
       });
-  }
-
-  ngOnDestroy(): void {
-    this.bookSub$.unsubscribe();
-    if (this.deleteBookSub$) {
-      this.deleteBookSub$.unsubscribe();
-    }
   }
 
   initForm(): void {
@@ -71,7 +59,7 @@ export class BookDeleteComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.deleteBookSub$ = this.bookService
+   this.bookService
       .deleteBook(this.id)
       .subscribe(() => {
         this.router.navigate(['/home']);

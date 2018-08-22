@@ -1,5 +1,5 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Forms
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
@@ -7,9 +7,6 @@ import { mustMatchValidator } from '../../../core/shared/must-match.directive';
 
 // Router
 import { Router } from '@angular/router';
-
-// RXJS
-import { Subscription } from 'rxjs';
 
 // Services
 import { UserService } from '../../../core/services/user.service';
@@ -21,9 +18,8 @@ const emailRegex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  registerSub$: Subscription;
 
   constructor(
     private userService: UserService,
@@ -49,14 +45,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }, { validators: mustMatchValidator });
   }
 
-  ngOnDestroy(): void {
-    if (this.registerSub$) {
-      this.registerSub$.unsubscribe();
-    }
-  }
-
   onSubmit(): void {
-    this.registerSub$ = this.userService
+    this.userService
       .register(this.registerForm.value)
       .subscribe(() => {
         this.router.navigate(['/home']);
