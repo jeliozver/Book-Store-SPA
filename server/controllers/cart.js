@@ -4,6 +4,16 @@ const RECEIPT = require('mongoose').model('Receipt');
 const USER = require('mongoose').model('User');
 
 module.exports = {
+    getCartSize: (req, res) => {
+        let userId = req.user.id;
+        CART.findOne({ user: userId}).then((cart) => {
+            res.status(200).json({
+                message: '',
+                data: cart.books.length
+            });
+        });
+    },
+
     getCart: (req, res) => {
         let userId = req.user.id;
 
@@ -13,12 +23,6 @@ module.exports = {
                 res.status(200).json({
                     message: 'Cart retreived successfully!',
                     data: cart
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-                return res.status(400).json({
-                    message: 'Something went wrong, please try again.'
                 });
             });
     },

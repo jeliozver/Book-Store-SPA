@@ -12,6 +12,7 @@ module.exports = (APP) => {
     APP.post('/user/blockComments/:userId', AUTH.isInRole('Admin'), USER_CONTROLLER.blockComments);
     APP.post('/user/unlockComments/:userId', AUTH.isInRole('Admin'), USER_CONTROLLER.unblockComments);
 
+    APP.get('/cart/getSize', AUTH.isAuth, CART_CONTROLLER.getCartSize);
     APP.get('/user/cart', AUTH.isAuth, CART_CONTROLLER.getCart);
     APP.post('/user/cart/add/:bookId', AUTH.isAuth, CART_CONTROLLER.addToCart);
     APP.delete('/user/cart/delete/:bookId', AUTH.isAuth, CART_CONTROLLER.removeFromCart);
