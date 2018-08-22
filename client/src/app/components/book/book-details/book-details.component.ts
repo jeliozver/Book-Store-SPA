@@ -20,6 +20,9 @@ import { Book } from '../../../core/models/book.model';
 export class BookDetailsComponent implements OnInit {
   book: Book;
   bookId: string;
+  stars = ['', '', '', '', ''];
+  isRated: boolean;
+  isAdded: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +38,7 @@ export class BookDetailsComponent implements OnInit {
       .getSingleBook(this.bookId)
       .subscribe((res) => {
         this.book = res.data;
+        this.calcRating(this.book.currentRating);
       });
   }
 
@@ -44,6 +48,40 @@ export class BookDetailsComponent implements OnInit {
       .subscribe(() => {
         this.helperService.cartStatus.next('add');
       });
+  }
+
+  addToFavorites(): void {
+    if (!this.isRated) {
+      this.isRated = true;
+      this.bookService
+        .addToFavourites(this.bookId)
+        .subscribe();
+    }
+  }
+
+  rateBook(rating: number): void {
+    if (!this.isRated) {
+      this.isRated = true;
+      this.bookService
+        .rateBook(this.bookId, { rating: rating })
+        .subscribe((res) => {
+          this.book.currentRating = res.data.currentRating;
+          this.book.ratedCount++;
+          this.calcRating(this.book.currentRating);
+        });
+    }
+  }
+
+  calcRating(rating: number): void {
+    this.stars = ['', '', '', '', ''];
+    rating = Math.round(rating);
+    for (let i = 0; i < rating; i++) {
+      this.stars[i] = 'checked';
+    }
+  }
+
+  resetRating(): void {
+    this.calcRating(this.book.currentRating);
   }
 
 }
