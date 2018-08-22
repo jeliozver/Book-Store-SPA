@@ -39,7 +39,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.statusChecker = window.setInterval(() => this.tick(), 600000);
     this.isLogged = this.helperService.isLoggedIn();
     this.initForm();
-    this.getCartSize();
+    if (this.isLogged) {
+      this.getCartSize();
+    }
 
     this.isLoggedSub$ = this.helperService
       .isUserLogged
@@ -115,7 +117,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   logout(): void {
     this.username = undefined;
     this.isAdmin = undefined;
-    this.cartItems = 0;
+    this.cartItems = undefined;
     this.helperService.clearSession();
     this.helperService.isUserLogged.next(false);
   }
