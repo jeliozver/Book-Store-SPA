@@ -20,25 +20,6 @@
   margin: 10px 10px;
 }
 
-.details-btn {
-  display: inline-block;
-  margin: 10px auto;
-  text-decoration: none;
-  padding: 10px 30px;
-  background-color: crimson;
-  border: 1px solid crimson;
-  border-radius: 15px;
-  color: #FFF;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.details-btn:hover {
-  border-color: green;
-  background-color: green;
-}
-
 .book-card:hover {
   background-color: #91A3B0;
   border-color: #91A3B0;
