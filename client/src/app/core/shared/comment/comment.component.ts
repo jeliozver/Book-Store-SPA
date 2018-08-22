@@ -1,10 +1,10 @@
 // Decorators and Lifehooks
-import { Component, TemplateRef, Input, OnInit, OnDestroy } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { Component, TemplateRef, Input, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 // Services
 import { CommentService } from '../../services/comment.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 // Models
 import { Comment } from '../../models/comment.model';
@@ -15,7 +15,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css']
 })
-export class CommentComponent implements OnInit, OnDestroy {
+export class CommentComponent implements OnInit {
   @Input('bookId') bookId: string;
   comments: Comment[] = [];
   commentForm: FormGroup;
@@ -40,9 +40,6 @@ export class CommentComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.comments = res.data;
       });
-  }
-
-  ngOnDestroy(): void {
   }
 
   openFormModal(template: TemplateRef<any>, id?: string): void {
