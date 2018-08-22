@@ -23,6 +23,7 @@ export class BookDetailsComponent implements OnInit {
   stars = ['', '', '', '', ''];
   isRated: boolean;
   isAdded: boolean;
+  isBought: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,11 +44,14 @@ export class BookDetailsComponent implements OnInit {
   }
 
   buyBook(): void {
-    this.cartService
-      .addToCart(this.bookId)
-      .subscribe(() => {
-        this.helperService.cartStatus.next('add');
-      });
+    if (!this.isBought) {
+      this.isBought = true;
+      this.cartService
+        .addToCart(this.bookId)
+        .subscribe(() => {
+          this.helperService.cartStatus.next('add');
+        });
+    }
   }
 
   addToFavorites(): void {
