@@ -1,3 +1,11 @@
-<p>
-  cart works!
-</p>
+<div *ngIf="cart">
+  <form #formDir="ngForm" [formGroup]="cartForm" (ngSubmit)="onSubmit()">
+    <div class="form-group" *ngFor="let b of cart.books">
+      <p>{{b.title}}</p>
+      <input class="form-control" type="number" step="1" name="{{b._id}}" formControlName="{{b._id}}" />
+      <span class="btn btn-danger" (click)="onRemove(b._id)">Remove</span>
+    </div>
+    <p>{{cart.totalPrice | number:'1.2-2'}}</p>
+    <input type="submit" class="btn btn-primary" value="Checkout" [disabled]="cartForm.invalid" />
+  </form>
+</div>
