@@ -6,7 +6,7 @@ const USER = require('mongoose').model('User');
 module.exports = {
     getCartSize: (req, res) => {
         let userId = req.user.id;
-        CART.findOne({ user: userId}).then((cart) => {
+        CART.findOne({ user: userId }).then((cart) => {
             res.status(200).json({
                 message: '',
                 data: cart.books.length
@@ -100,6 +100,10 @@ module.exports = {
     },
 
     checkout: (req, res) => {
-        // TODO
-    },
+        let userId = req.user.id;
+        console.log(req.body);
+        return res.status(200).json({
+            message: 'Thank you for your order! Books will be sent to you as soon as possible!'
+        });
+    }
 };
