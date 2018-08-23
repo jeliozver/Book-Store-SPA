@@ -12,6 +12,8 @@ function generateToken(userInfo) {
     const USER = {
         id: userInfo.id,
         username: userInfo.username,
+        avatar: userInfo.avatar,
+        isCommentsBlocked: userInfo.isCommentsBlocked,
         isAdmin: userInfo.isAdmin,
         roles: userInfo.roles
     };
