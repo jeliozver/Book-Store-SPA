@@ -21,8 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    UserRoutingModule,
-    SharedModule
+    SharedModule,
+    UserRoutingModule
   ]
 })
 export class UserModule { }
