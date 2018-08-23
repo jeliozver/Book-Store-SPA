@@ -1,7 +1,9 @@
+import { Book } from '../models/book.model';
+
 export class Cart {
    constructor(
      public user: string,
-     public books: any[],
+     public books: Book[],
      public totalPrice: number
    ) { }
 }

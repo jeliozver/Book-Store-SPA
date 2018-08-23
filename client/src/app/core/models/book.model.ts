@@ -12,6 +12,7 @@ export class Book {
     public isbn: string,
     public pagesCount: number,
     public price: number,
+    public qty?: number,
     public creationDate?: Date,
     public currentRating?: number,
     public ratingPoints?: number,

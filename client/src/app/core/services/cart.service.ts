@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 // RXJS
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 // HTTP
 import { HttpClient } from '@angular/common/http';
@@ -29,7 +30,13 @@ export class CartService {
   }
 
   getCart(): Observable<ServerResponse<Cart>> {
-    return this.http.get<ServerResponse<Cart>>(baseUrl);
+    return this.http.get<ServerResponse<Cart>>(baseUrl)
+      .pipe(
+        map(res => {
+          res.data.books.map(b => b.qty = 1);
+          return res;
+        })
+      );
   }
 
   addToCart(id: string): Observable<ServerResponse<Cart>> {
