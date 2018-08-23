@@ -22,7 +22,7 @@
       <button class="btn btn-success" (click)="buyBook()" [disabled]="isBought">Buy Book</button>
       <button class="btn btn-secondary" (click)="addToFavorites()" [disabled]="isAdded">Add to favourites</button>
     </ng-template>
-    <ng-template [ngIf]="!isLoggeed">
+    <ng-template [ngIf]="!isLogged">
       <button class="btn btn-secondary" (click)="login()">Login to Buy, Rate and Comment</button>
     </ng-template>
   </div>

@@ -82,11 +82,16 @@ module.exports = {
 
                     user.save();
                     book.save();
-                    newComment.save();
-
-                    return res.status(200).json({
-                        message: 'Comment posted successfully!',
-                        data: newComment
+                    newComment.save().then(() => {
+                        COMMENT
+                            .findById(newComment._id)
+                            .populate({ path: 'user', select: 'username avatar' })
+                            .then((comment) => {
+                                return res.status(200).json({
+                                    message: 'Comment posted successfully!',
+                                    data: comment
+                                });
+                            });
                     });
                 }).catch((err) => {
                     console.log(err);
@@ -119,32 +124,36 @@ module.exports = {
                 });
             }
 
-            COMMENT.findById(commentId).then((comment) => {
-                if (!comment) {
-                    return res.status(400).json({
-                        message: 'There is no comment with the given id in our database.'
+            COMMENT
+                .findById(commentId)
+                .populate({ path: 'user', select: 'username avatar' })
+                .then((comment) => {
+                    if (!comment) {
+                        return res.status(400).json({
+                            message: 'There is no comment with the given id in our database.'
+                        });
+                    }
+
+                    if (comment.user.toString() !== userId && !req.user.isAdmin) {
+                        return res.status(400).json({
+                            message: 'You\'re not allowed to edit other user comments!'
+                        });
+                    }
+
+                    comment.content = editedComment;
+                    comment.save();
+
+                    return res.status(200).json({
+                        message: 'Comment edited successfully!',
+                        data: comment
                     });
-                }
-
-                if (comment.user.toString() !== userId && !req.user.isAdmin) {
+                })
+                .catch((err) => {
+                    console.log(err);
                     return res.status(400).json({
-                        message: 'You\'re not allowed to edit other user comments!'
+                        message: 'Something went wrong, please try again.'
                     });
-                }
-
-                comment.content = editedComment;
-                comment.save();
-
-                return res.status(200).json({
-                    message: 'Comment edited successfully!',
-                    data: comment
                 });
-            }).catch((err) => {
-                console.log(err);
-                return res.status(400).json({
-                    message: 'Something went wrong, please try again.'
-                });
-            });
         });
     },
 
