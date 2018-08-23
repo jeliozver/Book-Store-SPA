@@ -17,10 +17,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CommentComponent implements OnInit {
   @Input('bookId') bookId: string;
-  comments: Comment[] = [];
+  @Input('isLogged') isLogged: boolean;
+  @Input('isAdmin') isAdmin: boolean;
+  @Input('userId') userId: string;
   commentForm: FormGroup;
   commentModalRef: BsModalRef;
   removeModalRef: BsModalRef;
+  comments: Comment[] = [];
   isFromEdit: boolean;
   lastEditId: string;
   lastDeleteId: string;

@@ -20,10 +20,13 @@ import { Book } from '../../../core/models/book.model';
 export class BookDetailsComponent implements OnInit {
   book: Book;
   bookId: string;
-  stars = ['', '', '', '', ''];
+  userId: string;
+  isLogged: boolean;
+  isAdmin: boolean;
   isRated: boolean;
   isAdded: boolean;
   isBought: boolean;
+  stars = ['', '', '', '', ''];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +37,9 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('bookId');
+    this.isLogged = this.helperService.isLoggedIn();
+    this.isAdmin = this.helperService.isAdmin();
+    this.userId = this.helperService.getProfile().id;
 
     this.bookService
       .getSingleBook(this.bookId)
@@ -44,23 +50,24 @@ export class BookDetailsComponent implements OnInit {
   }
 
   buyBook(): void {
-    if (!this.isBought) {
-      this.isBought = true;
-      this.cartService
-        .addToCart(this.bookId)
-        .subscribe(() => {
-          this.helperService.cartStatus.next('add');
-        });
-    }
+    this.cartService
+      .addToCart(this.bookId)
+      .subscribe(() => {
+        this.helperService.cartStatus.next('add');
+        this.isBought = true;
+      }, () => {
+        this.isBought = true;
+      });
   }
 
   addToFavorites(): void {
-    if (!this.isRated) {
-      this.isRated = true;
-      this.bookService
-        .addToFavourites(this.bookId)
-        .subscribe();
-    }
+    this.bookService
+      .addToFavourites(this.bookId)
+      .subscribe(() => {
+        this.isAdded = true;
+      }, () => {
+        this.isAdded = true;
+      });
   }
 
   rateBook(rating: number): void {

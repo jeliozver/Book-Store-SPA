@@ -18,8 +18,8 @@
     <p>Pages: {{book.pagesCount}}</p>
     <p class="book-description">Description: {{book.description}}</p>
     <h2>Price: {{book.price}} &#x24;</h2>
-    <button class="btn btn-success" (click)="buyBook()">Buy Book</button>
-    <button class="btn btn-secondary" (click)="addToFavorites()">Add to favourites</button>
+    <button class="btn btn-success" (click)="buyBook()" [disabled]="isBought">Buy Book</button>
+    <button class="btn btn-secondary" (click)="addToFavorites()" [disabled]="isAdded">Add to favourites</button>
   </div>
 </div>
-<app-comment [bookId]="bookId"></app-comment>
+<app-comment [bookId]="bookId" [isLogged]="isLogged" [isAdmin]="isAdmin" [userId]="userId"></app-comment>
