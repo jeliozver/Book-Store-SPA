@@ -1,12 +1,54 @@
-<button type="button" class="btn btn-primary" (click)="openFormModal(commentFormTemplate)">Add Comment</button>
-<div *ngIf="comments">
-  <div *ngFor="let c of comments">
-    <p>{{c.content}}</p>
-    <button type="button" class="btn btn-primary" (click)="openFormModal(commentFormTemplate, c._id)">Edit Comment</button>
-    <button type="button" class="btn btn-danger" (click)="openRemoveModal(remove, c._id)">Delete Comment</button>
+<div class="row">
+  <div class="comments col-md-9">
+    <h3 class="mb-2">Comments</h3>
+
+    <div class="row pt-2">
+      <div class="col-12">
+        <button 
+          [hidden]="!isLogged"
+          type="button"
+          class="btn btn-primary"
+          (click)="openFormModal(commentFormTemplate)">Add Comment
+        </button>
+      </div>
+    </div>
+
+    <div class="comment mb-2 row" *ngFor="let c of comments">
+      <div class="comment-avatar col-md-1 col-sm-2 text-center pr-1">
+        <a routerLink="/user/profile/{{c.user.username}}">
+          <img class="mx-auto rounded-circle img-fluid" src="{{c.user.avatar}}" alt="avatar" />
+        </a>
+      </div>
+      <div class="comment-content col-md-11 col-sm-10">
+        <h6 class="small comment-meta">
+          <a routerLink="/user/profile/{{c.user.username}}">by {{c.user.username}}</a> on {{c.creationDate | date:'medium'}}
+        </h6>
+        <div class="comment-body">
+          <p>{{c.content}}</p>
+          <button 
+            [hidden]="!isAdmin && c.user._id !== userId"
+            type="button"
+            class="btn btn-primary btn-sm"
+            (click)="openFormModal(commentFormTemplate, c._id)">Edit Comment
+          </button>
+          <button
+          [hidden]="!isAdmin && c.user._id !== userId"
+          type="button"
+          class="btn btn-danger btn-sm"
+          (click)="openRemoveModal(remove, c._id)">Delete Comment
+        </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row pt-2">
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" (click)="loadMoreComments()">Load More...</button>
+      </div>
+    </div>
+
   </div>
 </div>
-<button type="button" class="btn btn-primary" (click)="loadMoreComments()">Load More...</button>
 
 <ng-template #commentFormTemplate>
   <div class="modal-header">

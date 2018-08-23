@@ -1,3 +1,35 @@
 .test {
   margin-top: 10px;
 }
+
+.comment {
+  padding: 20px;
+  background-color: #313532;
+  border-radius: 10px;
+}
+
+.col-12 {
+  margin-bottom: 10px;
+}
+
+.col-md-9 {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.mb-2 {
+  margin-bottom: 10px;
+}
+
+.comment-body button {
+  float: left;
+  margin-left: 10px;
+}
+
+.comment-meta {
+  text-align: left;
+}
+
+.comment-body p {
+  text-align: justify;
+}
