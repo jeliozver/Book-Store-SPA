@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
 // Models
 import { ServerResponse } from '../models/server-response.model';
+import { Cart } from '../models/cart.model';
 
 const baseUrl = 'http://localhost:8000/user/cart';
 const getCartSizeEndpoint = 'http://localhost:8000/cart/getSize';
@@ -27,16 +28,16 @@ export class CartService {
     return this.http.get<ServerResponse<number>>(getCartSizeEndpoint);
   }
 
-  getCart(): Observable<ServerResponse<object>> {
-    return this.http.get<ServerResponse<object>>(baseUrl);
+  getCart(): Observable<ServerResponse<Cart>> {
+    return this.http.get<ServerResponse<Cart>>(baseUrl);
   }
 
-  addToCart(id: string): Observable<ServerResponse<object>> {
-    return this.http.post<ServerResponse<object>>(baseUrl + addToCartEndpoint + id, {});
+  addToCart(id: string): Observable<ServerResponse<Cart>> {
+    return this.http.post<ServerResponse<Cart>>(baseUrl + addToCartEndpoint + id, {});
   }
 
-  removeFromCart(id: string): Observable<ServerResponse<object>> {
-    return this.http.delete<ServerResponse<object>>(baseUrl + removeFromCartEndpoint + id);
+  removeFromCart(id: string): Observable<ServerResponse<Cart>> {
+    return this.http.delete<ServerResponse<Cart>>(baseUrl + removeFromCartEndpoint + id);
   }
 
   checkout(payload: object): Observable<ServerResponse<object>> {
