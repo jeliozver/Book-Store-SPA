@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Router
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // Services
 import { BookService } from '../../../core/services/book.service';
@@ -29,6 +29,7 @@ export class BookDetailsComponent implements OnInit {
   stars = ['', '', '', '', ''];
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private bookService: BookService,
     private cartService: CartService,
@@ -93,6 +94,10 @@ export class BookDetailsComponent implements OnInit {
 
   resetRating(): void {
     this.calcRating(this.book.currentRating);
+  }
+
+  login(): void {
+    this.router.navigate(['/user/login']);
   }
 
 }
