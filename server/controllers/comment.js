@@ -28,7 +28,7 @@ module.exports = {
 
         COMMENT
             .find({ book: bookId })
-            .populate({ path: 'user', select: 'username' })
+            .populate({ path: 'user', select: 'username avatar' })
             .sort({ creationDate: -1 })
             .skip(skipCount)
             .limit(PAGE_LIMIT)
