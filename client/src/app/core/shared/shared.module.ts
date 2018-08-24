@@ -16,6 +16,9 @@ import { IsUrlDirective } from './is-url.directive';
 import { IsIsbnDirective } from './is-isbn.directive';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// Pipes
+import { CommentTimePipe } from '../pipes/comment-time.pipe';
+
 @NgModule({
   declarations: [
     CommentComponent,
@@ -23,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BookComponent,
     MustMatchDirective,
     IsUrlDirective,
-    IsIsbnDirective
+    IsIsbnDirective,
+    CommentTimePipe
   ],
   imports: [
     CommonModule,

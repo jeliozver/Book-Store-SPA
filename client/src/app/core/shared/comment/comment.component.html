@@ -21,7 +21,7 @@
       </div>
       <div class="comment-content col-md-11 col-sm-10">
         <h6 class="small comment-meta">
-          <a routerLink="/user/profile/{{c.user.username}}">by {{c.user.username}}</a> on {{c.creationDate | date:'medium'}}
+          <a routerLink="/user/profile/{{c.user.username}}">by {{c.user.username}}</a> {{c.creationDate | commentTime}} ago
         </h6>
         <div class="comment-body">
           <p>{{c.content}}</p>
