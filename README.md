@@ -34,35 +34,34 @@ Book Store requires
 * [MongoDB](https://www.mongodb.com/download-center#community) v3.6+
 * [NodeJS](https://nodejs.org/en/) v8+
 
-Install MongoDB and start the database (port: 27017)
+To start the database (port: 27017): Install MongoDB, open new cmd window (in project root) and run
 
 ```sh
 $ cd server
 $ start-mongodb
 ```
 
-After you start MondoDB
-Important !!!
-Do this step one only the first time you start the app
-
-```sh
-$ seedBooks
-```
-
-Install the dependencies and start the server (port: 8000)
+To add initial seeding: (do this step once only the first time you start the app)
+After you start MondoDB open new cmd window (in project root) and run
 
 ```sh
 $ cd server
-$ npm install
+$ seedBooks
+```
+
+To start the server (port: 8000): open new cmd window (in project root) and run
+
+```sh
+$ cd server
+$ npm install (if you havent already installed the dependencies)
 $ npm start
 ```
 
-Install the dependencies and start the client (port: 4200)
+To start the client (port: 4200): open new cmd window (in project root) and run
 
 ```sh
-$ cd..
 $ cd client
-$ npm install
+$ npm install (if you havent already installed the dependencies)
 $ ng serve
 ```
 
