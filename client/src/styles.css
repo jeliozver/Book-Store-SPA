@@ -19,6 +19,10 @@ body {
   text-align: center;
 }
 
+main { 
+  width: 96%;
+}
+
 /* Forms Start */
 
 .form {
