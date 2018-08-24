@@ -15,19 +15,10 @@ module.exports = (config) => {
         console.log('MongoDB is ready!');
     });
 
-    // Seed Imports
     require('../models/Cart');
     require('../models/User');
     require('../models/Role').init();
     require('../models/Receipt');
-    require('../models/Book').init();
+    require('../models/Book');
     require('../models/Comment');
-
-    // Normal Imports
-    // require('../models/Cart');
-    // require('../models/User');
-    // require('../models/Role');
-    // require('../models/Receipt');
-    // require('../models/Book');
-    // require('../models/Comment');
 };
