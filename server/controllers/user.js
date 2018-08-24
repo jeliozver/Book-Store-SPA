@@ -185,7 +185,7 @@ module.exports = {
             user.save();
 
             res.status(200).json({
-                message: `User ${user.username} can post comments again!`
+                message: `User ${user.username} can now post comments!`
             });
         }).catch((err) => {
             console.log(err);
