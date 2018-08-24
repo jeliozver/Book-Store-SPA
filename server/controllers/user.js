@@ -1,6 +1,7 @@
 const VALIDATOR = require('validator');
 const PASSPORT = require('passport');
 const USER = require('mongoose').model('User');
+const RECEIPT = require('mongoose').model('Receipt');
 
 function validateRegisterForm(payload) {
     let errors = {};
@@ -146,6 +147,16 @@ module.exports = {
                     message: 'Something went wrong, please try again.'
                 });
             });
+    },
+
+    getPurchaseHistory: (req, res) => {
+        let userId = req.user.id;
+        RECEIPT.find({ user: userId }).then((receipts) => {
+            res.status(200).json({
+                message: '',
+                data: receipts
+            });
+        });
     },
 
     blockComments: (req, res) => {
