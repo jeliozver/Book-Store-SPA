@@ -127,9 +127,10 @@ module.exports = {
                 }
 
                 let userToSend = {
+                    id: user.id,
+                    isAdmin: user.isAdmin,
                     username: user.username,
                     avatar: user.avatar,
-                    id: user.id,
                     commentsCount: user.commentsCount,
                     favoriteBooks: user.favoriteBooks,
                 };
