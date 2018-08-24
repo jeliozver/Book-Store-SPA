@@ -93,7 +93,7 @@ module.exports = {
                 }
 
                 return res.status(200).json({
-                    message: 'Book retreived successfully!',
+                    message: '',
                     data: book
                 });
             })
