@@ -14,6 +14,7 @@
 
 .book-info a {
   text-decoration: none;
+  margin-right: 10px;
 }
 
 .book-info button {
@@ -31,4 +32,8 @@
 
 .checked {
   color: orange;
+}
+
+#admin-panel {
+  margin: 0;
 }

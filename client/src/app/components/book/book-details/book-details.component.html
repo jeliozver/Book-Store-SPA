@@ -22,6 +22,12 @@
       <button class="btn btn-success" (click)="buyBook()" [disabled]="isBought">Buy Book</button>
       <button class="btn btn-secondary" (click)="addToFavorites()" [disabled]="isAdded">Add to favourites</button>
     </ng-template>
+    <ng-template [ngIf]="isAdmin">
+      <div id="admin-panel">
+        <a class="btn btn-warning" routerLink="/book/edit/{{book._id}}">Edit Book</a>
+        <a class="btn btn-danger" routerLink="/book/delete/{{book._id}}">Delete Book</a>
+      </div>
+    </ng-template>
     <ng-template [ngIf]="!isLogged">
       <button class="btn btn-secondary" (click)="login()">Login to Buy, Rate and Comment</button>
     </ng-template>
