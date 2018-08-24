@@ -1,37 +1,39 @@
-<div class="top">
-  <pagination-controls
-    (pageChange)="pageChanged($event)"
-    maxSize="{{maxPages}}"
-    directionLinks="true"
-    autoHide="true"
-    responsive="true"
-    previousLabel="Previous"
-    nextLabel="Next"
-    screenReaderPaginationLabel="Pagination"
-    screenReaderPageLabel="page"
-    screenReaderCurrentLabel="You're on page">
-  </pagination-controls>
-</div>
-<div *ngIf="books" class="books-store">
-  <app-book *ngFor="let book of books | paginate: {
-  itemsPerPage: pageSize,
-  currentPage: currentPage,
-  totalItems: total }" [book]="book"></app-book>
-</div>
-<div *ngIf="books.length === 0" class="no-results">
-  <img src="https://i.imgur.com/KRVihMq.png" alt="no-item-found">
-</div>
-<div class="bottom">
-  <pagination-controls
-    (pageChange)="pageChanged($event)"
-    maxSize="{{maxPages}}"
-    directionLinks="true"
-    autoHide="true"
-    responsive="true"
-    previousLabel="Previous"
-    nextLabel="Next"
-    screenReaderPaginationLabel="Pagination"
-    screenReaderPageLabel="page"
-    screenReaderCurrentLabel="You're on page">
-  </pagination-controls>
-</div>
+<ng-template [ngIf]="books">
+  <div class="top">
+    <pagination-controls
+      (pageChange)="pageChanged($event)"
+      maxSize="{{maxPages}}"
+      directionLinks="true"
+      autoHide="true"
+      responsive="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+  </div>
+  <div class="books-store">
+    <app-book *ngFor="let book of books | paginate: {
+    itemsPerPage: pageSize,
+    currentPage: currentPage,
+    totalItems: total }" [book]="book"></app-book>
+  </div>
+  <div *ngIf="books.length === 0" class="no-results">
+    <img src="https://i.imgur.com/KRVihMq.png" alt="no-item-found">
+  </div>
+  <div class="bottom">
+    <pagination-controls
+      (pageChange)="pageChanged($event)"
+      maxSize="{{maxPages}}"
+      directionLinks="true"
+      autoHide="true"
+      responsive="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+  </div>
+</ng-template>
