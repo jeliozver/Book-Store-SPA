@@ -106,8 +106,8 @@ export class CartComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.cartService
       .checkout(this.cartForm.value)
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe(() => {
+        this.helperService.cartStatus.next('updateStatus');
         this.router.navigate(['/book/store/default']);
       });
   }
