@@ -10,11 +10,13 @@ import { HttpClient } from '@angular/common/http';
 // Models
 import { ServerResponse } from '../models/server-response.model';
 import { User } from '../models/user.model';
+import { Receipt } from '../models/receipt.model';
 
 const baseUrl = 'http://localhost:8000/user';
 const registerEndpoint = baseUrl + '/register';
 const loginEndpoint = baseUrl + '/login';
 const profileEndpoint = baseUrl + '/profile/';
+const getPurchaseHistoryEndpoint = baseUrl + '/purchaseHistory';
 const blockCommentsEndpoint = baseUrl + '/blockComments/';
 const unblockCommentsEndpoint = baseUrl + '/unlockComments/';
 
@@ -35,6 +37,10 @@ export class UserService {
 
   getProfile(username: string): Observable<ServerResponse<User>> {
     return this.http.get<ServerResponse<User>>(profileEndpoint + username);
+  }
+
+  getPurchaseHistory(): Observable<ServerResponse<Receipt>> {
+    return this.http.get<ServerResponse<Receipt>>(getPurchaseHistoryEndpoint);
   }
 
   blockComments(id: string): Observable<ServerResponse<object>> {
