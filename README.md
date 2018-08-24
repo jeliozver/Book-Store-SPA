@@ -39,6 +39,14 @@ $ cd server
 $ start-mongodb
 ```
 
+After you start MondoDB
+Important !!!
+Do this step one only the first time you start the app
+
+```sh
+$ seedBooks
+```
+
 Install the dependencies and start the server (port: 8000)
 
 ```sh
