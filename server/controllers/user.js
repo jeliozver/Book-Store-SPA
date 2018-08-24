@@ -135,7 +135,7 @@ module.exports = {
                 };
 
                 return res.status(200).json({
-                    message: 'User profile retreived successfully',
+                    message: '',
                     data: userToSend
                 });
             })
