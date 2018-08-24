@@ -11,12 +11,14 @@ import { SharedModule } from '../../core/shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReceiptsComponent } from './receipts/receipts.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReceiptsComponent
   ],
   imports: [
     CommonModule,
