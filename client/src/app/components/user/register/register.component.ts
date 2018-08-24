@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Forms
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { mustMatchValidator } from '../../../core/shared/must-match.directive';
+import { mustMatchValidator } from '../../../core/directives/must-match.directive';
 
 // Router
 import { Router } from '@angular/router';

@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 import { BookService } from '../../../core/services/book.service';
 
 // Custom Validators
-import { isUrlValidator } from '../../../core/shared/is-url.directive';
-import { isIsbnValidator } from '../../../core/shared/is-isbn.directive';
+import { isUrlValidator } from '../../../core/directives/is-url.directive';
+import { isIsbnValidator } from '../../../core/directives/is-isbn.directive';
 
 @Component({
   selector: 'app-book-create',
