@@ -18,6 +18,9 @@
   currentPage: currentPage,
   totalItems: total }" [book]="book"></app-book>
 </div>
+<div *ngIf="books.length === 0" class="no-results">
+  <img src="https://i.imgur.com/KRVihMq.png" alt="no-item-found">
+</div>
 <div class="bottom">
   <pagination-controls
     (pageChange)="pageChanged($event)"
