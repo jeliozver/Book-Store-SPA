@@ -21,7 +21,7 @@ module.exports = {
             .populate('books')
             .then((cart) => {
                 res.status(200).json({
-                    message: 'Cart retreived successfully!',
+                    message: '',
                     data: cart
                 });
             });

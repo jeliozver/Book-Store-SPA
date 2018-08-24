@@ -1,5 +1,9 @@
 // Decorators and Lifehooks
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, TemplateRef, OnInit, OnDestroy } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
+// Router
+import { Router } from '@angular/router';
 
 // Forms
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +15,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 // Services
 import { CartService } from '../../services/cart.service';
 import { HelperService } from '../../services/helper.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 // Models
 import { Cart } from '../../models/cart.model';
@@ -25,11 +30,15 @@ export class CartComponent implements OnInit, OnDestroy {
   cart: Cart;
   cartForm: FormGroup;
   changesSub$: Subscription;
+  removeModalRef: BsModalRef;
   lastCartState: string;
+  lastDeleteId: string;
 
   constructor(
+    private router: Router,
     private cartService: CartService,
-    private helperService: HelperService
+    private helperService: HelperService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +59,12 @@ export class CartComponent implements OnInit, OnDestroy {
     const group: any = {};
 
     books.forEach(book => {
-      group[book._id] = new FormControl(book.qty || '', Validators.required);
+      group[book._id] = new FormControl(
+        book.qty || '', [
+          Validators.required,
+          Validators.min(1),
+          Validators.max(20)
+        ]);
     });
 
     return new FormGroup(group);
@@ -71,12 +85,20 @@ export class CartComponent implements OnInit, OnDestroy {
       });
   }
 
-  onRemove(id: string): void {
+  openRemoveModal(template: TemplateRef<any>, id: string): void {
+    this.lastDeleteId = id;
+    this.removeModalRef = this.modalService.show(
+      template,
+      { class: 'myModal modal-sm' }
+    );
+  }
+
+  onRemove(): void {
     this.cartService
-      .removeFromCart(id)
+      .removeFromCart(this.lastDeleteId)
       .subscribe(() => {
         this.helperService.cartStatus.next('remove');
-        this.cart.books = this.cart.books.filter(b => b._id !== id);
+        this.cart.books = this.cart.books.filter(b => b._id !== this.lastDeleteId);
         this.reCalcSum(this.cartForm.value);
       });
   }
@@ -86,6 +108,7 @@ export class CartComponent implements OnInit, OnDestroy {
       .checkout(this.cartForm.value)
       .subscribe((res) => {
         console.log(res);
+        this.router.navigate(['/book/store/default']);
       });
   }
 
@@ -96,5 +119,9 @@ export class CartComponent implements OnInit, OnDestroy {
     }
 
     this.cart.totalPrice = price;
+  }
+
+  getControl(id: string) {
+    return this.cartForm.get(id);
   }
 }
