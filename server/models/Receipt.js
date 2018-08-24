@@ -5,7 +5,7 @@ const OBJECT_ID = MONGOOSE.Schema.Types.ObjectId;
 
 const RECEIPT_SCHEMA = MONGOOSE.Schema({
     user: { type: OBJECT_ID, ref: 'User' },
-    productsInfo: [{ type: Object }],
+    productsInfo: [],
     totalPrice: { type: NUMBER, default: 0 },
 });
 
