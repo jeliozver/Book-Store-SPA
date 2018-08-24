@@ -1,6 +1,6 @@
 @echo off
 echo Starting MongoDB...
-mkdir Project
+mkdir BookStore
 mongod --dbpath=BookStore
 :finish
 pause
