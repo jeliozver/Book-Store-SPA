@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from '../../core/shared/cart/cart.component';
+import { ReceiptsComponent } from './receipts/receipts.component';
+
 // Guards
 import { IsAnonymousGuard } from '../../core/guards/is-anonymous.guard';
 import { IsAuthenticatedGuard } from '../../core/guards/is-authenticated.guard';
@@ -23,6 +25,11 @@ const userRoutes: Routes = [
     path: 'profile/:username',
     canActivate: [IsAuthenticatedGuard],
     component: ProfileComponent
+  },
+  {
+    path: 'purchaseHistory',
+    canActivate: [IsAuthenticatedGuard],
+    component: ReceiptsComponent
   },
   {
     path: 'cart',
