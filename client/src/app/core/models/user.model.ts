@@ -1,5 +1,6 @@
 import { Cart } from './cart.model';
 import { Book } from './book.model';
+import { Receipt } from './receipt.model';
 
 export class User {
   constructor(
@@ -11,6 +12,6 @@ export class User {
     public commentsCount: number,
     public cart: Cart,
     public favoriteBooks: Book[],
-    public receipts?: {}
+    public receipts: Receipt[]
   ) { }
 }

@@ -53,7 +53,7 @@ export class BookStoreComponent implements OnInit, OnDestroy {
 
   initRequest(query: string): void {
     query = this.generateQuery(query);
-     this.bookSevice
+    this.bookSevice
       .search(query)
       .subscribe((res) => {
         this.total = res.itemsCount;
