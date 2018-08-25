@@ -1,8 +1,8 @@
 // Decorators and Lifehooks
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Router
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 // Forms
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
@@ -11,6 +11,9 @@ import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/fo
 import { UserService } from '../../../core/services/user.service';
 import { CommentService } from '../../../core/services/comment.service';
 import { HelperService } from '../../../core/services/helper.service';
+
+// RXJS
+import { Subscription } from 'rxjs';
 
 // Custom Validators
 import { isUrlValidator } from '../../../core/directives/is-url.directive';
@@ -24,10 +27,11 @@ import { Comment } from '../../../core/models/comment.model';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   user: User;
   comments: Comment[];
   avatarForm: FormGroup;
+  routeChangeSub$: Subscription;
   currentUserId: string;
   isAdmin: boolean;
 
@@ -39,20 +43,21 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let username = this.route.snapshot.paramMap.get('username');
+    this.routeChangeSub$ = this.route.params.subscribe((params) => {
+      let username = params['username'];
+      if (username === 'mine') {
+        username = this.helperService.getProfile().username;
+      }
+      this.userService
+        .getProfile(username)
+        .subscribe((res) => {
+          this.user = res.data;
+          this.getComments();
+        });
+    });
+
     this.isAdmin = this.helperService.isAdmin();
     this.currentUserId = this.helperService.getProfile().id;
-
-    if (username === 'mine') {
-      username = this.helperService.getProfile().username;
-    }
-
-    this.userService
-      .getProfile(username)
-      .subscribe((res) => {
-        this.user = res.data;
-        this.getComments();
-      });
 
     this.avatarForm = new FormGroup({
       'avatar': new FormControl('', [
@@ -62,7 +67,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-
+  ngOnDestroy(): void {
+    this.routeChangeSub$.unsubscribe();
+  }
 
   getComments(): void {
     this.commentService
@@ -70,6 +77,10 @@ export class ProfileComponent implements OnInit {
       .subscribe((res) => {
         this.comments = res.data;
       });
+  }
+
+  onSubmit(): void {
+    this.changeUserAvatar();
   }
 
   changeUserAvatar(): void {
