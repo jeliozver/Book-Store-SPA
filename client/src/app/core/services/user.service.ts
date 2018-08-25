@@ -17,6 +17,7 @@ const registerEndpoint = baseUrl + '/register';
 const loginEndpoint = baseUrl + '/login';
 const profileEndpoint = baseUrl + '/profile/';
 const getPurchaseHistoryEndpoint = baseUrl + '/purchaseHistory';
+const changeAvatarEndpoint = baseUrl + '/changeAvatar';
 const blockCommentsEndpoint = baseUrl + '/blockComments/';
 const unblockCommentsEndpoint = baseUrl + '/unlockComments/';
 
@@ -41,6 +42,10 @@ export class UserService {
 
   getPurchaseHistory(): Observable<ServerResponse<Receipt>> {
     return this.http.get<ServerResponse<Receipt>>(getPurchaseHistoryEndpoint);
+  }
+
+  changeAvatar(payload: object): Observable<ServerResponse<object>> {
+    return this.http.post<ServerResponse<object>>(changeAvatarEndpoint, payload);
   }
 
   blockComments(id: string): Observable<ServerResponse<object>> {

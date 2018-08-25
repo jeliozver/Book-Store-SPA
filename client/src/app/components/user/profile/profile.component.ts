@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 // Router
 import { ActivatedRoute } from '@angular/router';
 
+// Forms
+import { FormGroup, AbstractControl } from '@angular/forms';
+
 // Services
 import { UserService } from '../../../core/services/user.service';
 import { HelperService } from '../../../core/services/helper.service';
@@ -18,6 +21,7 @@ import { User } from '../../../core/models/user.model';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  avatarForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +44,21 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  changeUserAvatar(): void {
+    const newAvatar = this.avatar.value;
+
+    const payload = {
+      id: this.user.id,
+      avatar: newAvatar
+    };
+
+    this.userService
+      .changeAvatar(payload)
+      .subscribe(() => {
+        this.user.avatar = newAvatar;
+      });
+  }
+
   blockComments(id: string): void {
     this.userService
       .blockComments(id)
@@ -50,6 +69,10 @@ export class ProfileComponent implements OnInit {
     this.userService
       .unblockComments(id)
       .subscribe();
+  }
+
+  get avatar(): AbstractControl {
+    return this.avatarForm.get('avatar');
   }
 
 }

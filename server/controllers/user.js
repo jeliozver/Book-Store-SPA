@@ -64,6 +64,21 @@ function validateLoginForm(payload) {
     };
 }
 
+function validateAvatarForm(payload) {
+    let errors = {};
+    let isFormValid = true;
+
+    if (!payload || !VALIDATOR.isURL(payload.avatar)) {
+        isFormValid = false;
+        errors.avatar = 'Please provide a valid link to your avatar image.';
+    }
+
+    return {
+        success: isFormValid,
+        errors
+    };
+}
+
 module.exports = {
     register: (req, res) => {
 
@@ -157,6 +172,42 @@ module.exports = {
                 data: receipts
             });
         });
+    },
+
+    changeAvatar: (req, res) => {
+        let requesterId = req.user.id;
+        let requesterIsAdmin = req.user.isAdmin;
+        let userToChange = req.body.id;
+        let newAvatar = req.body.avatar;
+
+        let validationResult = validateAvatarForm(req.body);
+
+        if (!validationResult.success) {
+            return res.status(400).json({
+                message: 'Avatar form validation failed!',
+                errors: validationResult.errors
+            });
+        }
+
+        if (requesterId !== userToChange && !requesterIsAdmin) {
+            return res.status(401).json({
+                message: 'You\'re not allowed to change other user avatar!'
+            });
+        }
+
+        USER
+            .update({ _id: userToChange }, { $set: { avatar: newAvatar } })
+            .then(() => {
+                return res.status(200).json({
+                    message: 'Avatar changed successfully!'
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                return res.status(400).json({
+                    message: 'Something went wrong, please try again.'
+                });
+            });
     },
 
     blockComments: (req, res) => {
