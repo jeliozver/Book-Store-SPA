@@ -22,6 +22,7 @@ export class ReceiptsComponent implements OnInit {
       .getPurchaseHistory()
       .subscribe((res) => {
         this.receipts = res.data;
+        console.log(this.receipts);
       });
   }
 

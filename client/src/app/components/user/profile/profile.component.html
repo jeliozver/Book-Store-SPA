@@ -1,3 +1,67 @@
-<ng-template [ngIf]="user">
-  <p>{{user.username}}</p>
-</ng-template>
+<div *ngIf="user" id="profile" class="row my-2">
+  <div class="col-lg-8 order-lg-2">
+    <div class="tab-content py-4">
+      <div class="tab-pane active">
+        <h5 class="mb-3">Username: {{user.username}}</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Role</h6>
+            <p>
+              User
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h6>Comments</h6>
+            <p>
+              {{user.commentsCount}}
+            </p>
+          </div>
+          <div class="col-md-12">
+            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Latest Comments</h5>
+            <table class="table table-sm table-hover table-striped">
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 order-lg-1 text-center">
+    <img src="{{user.avatar}}" id="avatar" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+    <ng-template [ngIf]="currentUserId === user.id || isAdmin">
+      <h6 class="mt-2">Change avatar (URL to a new image)</h6>
+      <label class="custom-file">
+        <form #formDir="ngForm" [formGroup]="avatarForm" (ngSubmit)="onSubmit()">
+          <input class="form-control" id="avatar-input" type="url" name="avatar" formControlName="avatar" />
+          <input class="btn btn-success" type="submit" value="Submit" [disabled]="avatarForm.invalid" />
+        </form>
+      </label>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+#profile {
+  margin-top: 40px !important;
+}
+
+#avatar {
+  width: 150px;
+  height: 150px;
+}
+
+#avatar-input {
+  width: 50%;
+  margin: 10px auto;
+}
