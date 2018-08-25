@@ -40,8 +40,8 @@ export class UserService {
     return this.http.get<ServerResponse<User>>(profileEndpoint + username);
   }
 
-  getPurchaseHistory(): Observable<ServerResponse<Receipt>> {
-    return this.http.get<ServerResponse<Receipt>>(getPurchaseHistoryEndpoint);
+  getPurchaseHistory(): Observable<ServerResponse<Receipt[]>> {
+    return this.http.get<ServerResponse<Receipt[]>>(getPurchaseHistoryEndpoint);
   }
 
   changeAvatar(payload: object): Observable<ServerResponse<object>> {
