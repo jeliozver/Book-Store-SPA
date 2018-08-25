@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Router
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // Forms
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
@@ -52,7 +52,6 @@ export class ProfileComponent implements OnInit {
       .subscribe((res) => {
         this.user = res.data;
         this.getComments();
-        console.log(this.user);
       });
 
     this.avatarForm = new FormGroup({
@@ -63,12 +62,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
+
   getComments(): void {
     this.commentService
       .getLatestFiveComments(this.user.id)
       .subscribe((res) => {
         this.comments = res.data;
-        console.log(this.comments);
       });
   }
 

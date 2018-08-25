@@ -3,11 +3,15 @@
     <div class="tab-content py-4">
       <div class="tab-pane active">
         <h5 class="mb-3">Username: {{user.username}}</h5>
+        <div *ngIf="isAdmin" class="admin-panel clear-fix">
+            <button class="btn btn-danger">Block Comments</button>
+            <button class="btn btn-success">Unblock Comments</button>
+          </div>
         <div class="row">
           <div class="col-md-6">
             <h6>Role</h6>
             <p>
-              User
+              {{user.isAdmin? 'Admin': 'User'}}
             </p>
           </div>
           <div class="col-md-6">
@@ -18,35 +22,18 @@
           </div>
           <div class="col-md-12">
             <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Latest Comments</h5>
-            <table class="table table-sm table-hover table-striped">
+            <table class="table table-sm table-hover table-striped" *ngIf="comments && comments.length > 0">
               <tbody>
-                <tr>
+                <tr *ngFor="let c of comments">
                   <td>
-                    <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                    {{c.content | shortenString:100}} <a routerLink="/book/details/{{c.book._id}}">{{c.book.title}}</a>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <div *ngIf="user.commentsCount === 0">
+              No comments yet
+            </div>
           </div>
         </div>
       </div>
@@ -64,4 +51,7 @@
       </label>
     </ng-template>
   </div>
+</div>
+<div *ngIf="!user" class="no-results">
+  <img src="https://i.imgur.com/KRVihMq.png" alt="no-item-found">
 </div>

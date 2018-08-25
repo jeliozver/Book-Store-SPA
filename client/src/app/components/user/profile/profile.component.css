@@ -11,3 +11,7 @@
   width: 50%;
   margin: 10px auto;
 }
+
+.admin-panel button {
+  margin-left: 5px;
+}
