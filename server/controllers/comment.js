@@ -46,6 +46,28 @@ module.exports = {
             });
     },
 
+    getLatestFiveByUser: (req, res) => {
+        let userId = req.params.userId;
+
+        COMMENT
+            .find({ user: userId })
+            .populate('book')
+            .sort({ creationDate: -1 })
+            .limit(5)
+            .then((comments) => {
+                res.status(200).json({
+                    message: '',
+                    data: comments
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+                return res.status(400).json({
+                    message: 'Something went wrong, please try again.'
+                });
+            });
+    },
+
     add: (req, res) => {
         let bookId = req.params.bookId;
         let userId = req.user.id;
