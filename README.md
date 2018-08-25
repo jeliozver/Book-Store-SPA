@@ -76,9 +76,9 @@ $ ng serve
     - Buy books
     - Rate books
     - Comment books
-    - Create favorite books list
     - View user profiles
     - View his own purchases history
+    - Create favorite books list
     - Can change his own avatar
 
 - Admin users
