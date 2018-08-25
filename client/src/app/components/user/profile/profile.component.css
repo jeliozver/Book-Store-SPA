@@ -15,3 +15,13 @@
 .admin-panel button {
   margin-left: 5px;
 }
+
+.favorite-books {
+  margin-bottom: 30px;
+}
+
+.favorite-books h2 {
+  font-family: 'Wendy One', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}

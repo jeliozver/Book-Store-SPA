@@ -4,9 +4,9 @@
       <div class="tab-pane active">
         <h5 class="mb-3">Username: {{user.username}}</h5>
         <div *ngIf="isAdmin" class="admin-panel clear-fix">
-            <button class="btn btn-danger">Block Comments</button>
-            <button class="btn btn-success">Unblock Comments</button>
-          </div>
+          <button class="btn btn-danger" (click)="blockComments(user.id)">Block Comments</button>
+          <button class="btn btn-success" (click)="unblockComments(user.id)">Unblock Comments</button>
+        </div>
         <div class="row">
           <div class="col-md-6">
             <h6>Role</h6>
@@ -21,7 +21,7 @@
             </p>
           </div>
           <div class="col-md-12">
-            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Latest Comments</h5>
+            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span>Latest comments by {{user.username}}</h5>
             <table class="table table-sm table-hover table-striped" *ngIf="comments && comments.length > 0">
               <tbody>
                 <tr *ngFor="let c of comments">
@@ -31,7 +31,7 @@
                 </tr>
               </tbody>
             </table>
-            <div *ngIf="user.commentsCount === 0">
+            <div [hidden]="user.commentsCount > 0">
               No comments yet
             </div>
           </div>
@@ -50,6 +50,13 @@
         </form>
       </label>
     </ng-template>
+  </div>
+</div>
+<div *ngIf="user" class="favorite-books">
+  <h2>Favorite Books List</h2>
+  <app-book *ngFor="let book of user.favoriteBooks" [book]="book"></app-book>
+  <div [hidden]="user.favoriteBooks.length > 0">
+    No books to the list yet
   </div>
 </div>
 <div *ngIf="!user" class="no-results">
