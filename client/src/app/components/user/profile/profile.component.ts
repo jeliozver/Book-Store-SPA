@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // Forms
-import { FormGroup, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
 
 // Services
 import { UserService } from '../../../core/services/user.service';
 import { HelperService } from '../../../core/services/helper.service';
+
+// Custom Validators
+import { isUrlValidator } from '../../../core/directives/is-url.directive';
 
 // Models
 import { User } from '../../../core/models/user.model';
@@ -42,6 +45,13 @@ export class ProfileComponent implements OnInit {
         this.user = res.data;
         console.log(this.user);
       });
+
+    this.avatarForm = new FormGroup({
+      'avatar': new FormControl('', [
+        Validators.required,
+        isUrlValidator
+      ])
+    });
   }
 
   changeUserAvatar(): void {
