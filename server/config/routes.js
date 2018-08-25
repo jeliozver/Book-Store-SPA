@@ -10,6 +10,7 @@ module.exports = (APP) => {
     APP.post('/user/login', USER_CONTROLLER.login);
     APP.get('/user/profile/:username', AUTH.isAuth, USER_CONTROLLER.getProfile);
     APP.get('/user/purchaseHistory', AUTH.isAuth, USER_CONTROLLER.getPurchaseHistory);
+    APP.post('/user/changeAvatar', AUTH.isAuth, USER_CONTROLLER.changeAvatar);
     APP.post('/user/blockComments/:userId', AUTH.isInRole('Admin'), USER_CONTROLLER.blockComments);
     APP.post('/user/unlockComments/:userId', AUTH.isInRole('Admin'), USER_CONTROLLER.unblockComments);
 
