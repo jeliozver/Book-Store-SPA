@@ -9,6 +9,7 @@ import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/fo
 
 // Services
 import { UserService } from '../../../core/services/user.service';
+import { CommentService } from '../../../core/services/comment.service';
 import { HelperService } from '../../../core/services/helper.service';
 
 // Custom Validators
@@ -16,6 +17,7 @@ import { isUrlValidator } from '../../../core/directives/is-url.directive';
 
 // Models
 import { User } from '../../../core/models/user.model';
+import { Comment } from '../../../core/models/comment.model';
 
 @Component({
   selector: 'app-profile',
@@ -24,16 +26,22 @@ import { User } from '../../../core/models/user.model';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  comments: Comment[];
   avatarForm: FormGroup;
+  currentUserId: string;
+  isAdmin: boolean;
 
   constructor(
     private route: ActivatedRoute,
+    private commentService: CommentService,
     private userService: UserService,
     private helperService: HelperService
   ) { }
 
   ngOnInit(): void {
     let username = this.route.snapshot.paramMap.get('username');
+    this.isAdmin = this.helperService.isAdmin();
+    this.currentUserId = this.helperService.getProfile().id;
 
     if (username === 'mine') {
       username = this.helperService.getProfile().username;
@@ -43,6 +51,7 @@ export class ProfileComponent implements OnInit {
       .getProfile(username)
       .subscribe((res) => {
         this.user = res.data;
+        this.getComments();
         console.log(this.user);
       });
 
@@ -52,6 +61,15 @@ export class ProfileComponent implements OnInit {
         isUrlValidator
       ])
     });
+  }
+
+  getComments(): void {
+    this.commentService
+      .getLatestFiveComments(this.user.id)
+      .subscribe((res) => {
+        this.comments = res.data;
+        console.log(this.comments);
+      });
   }
 
   changeUserAvatar(): void {

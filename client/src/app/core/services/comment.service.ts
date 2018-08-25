@@ -15,6 +15,7 @@ const baseUrl = 'http://localhost:8000/comment';
 const addCommentEndpoint = '/add/';
 const editCommentEndpoint = '/edit/';
 const deleteCommentEndpoint = '/delete/';
+const getLatestFiveEndpont = '/getLatestFiveByUser/';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class CommentService {
 
   getComments(id: string, page: string): Observable<ServerResponse<Comment[]>> {
     return this.http.get<ServerResponse<Comment[]>>(`${baseUrl}/${id}/${page}`);
+  }
+
+  getLatestFiveComments(id: string): Observable<ServerResponse<Comment[]>> {
+    return this.http.get<ServerResponse<Comment[]>>(baseUrl + getLatestFiveEndpont + id);
   }
 
   addComment(id: string, payload: Comment): Observable<ServerResponse<Comment>> {
