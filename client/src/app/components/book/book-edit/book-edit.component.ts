@@ -80,8 +80,8 @@ export class BookEditComponent implements OnInit {
   onSubmit(): void {
     this.bookService
       .editBook(this.id, this.editBookForm.value)
-      .subscribe(() => {
-        this.router.navigate(['/home']);
+      .subscribe((res) => {
+        this.router.navigate([`/book/details/${res.data._id}`]);
       });
   }
 

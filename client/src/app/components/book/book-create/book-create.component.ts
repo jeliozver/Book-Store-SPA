@@ -67,8 +67,8 @@ export class BookCreateComponent implements OnInit {
   onSubmit(): void {
     this.bookService
       .createBook(this.createBookForm.value)
-      .subscribe(() => {
-        this.router.navigate(['/home']);
+      .subscribe((res) => {
+        this.router.navigate([`/book/details/${res.data._id}`]);
       });
   }
 
