@@ -77,13 +77,16 @@ $ ng serve
     - Rate books
     - Comment books
     - Create favorite books list
+    - View user profiles
+    - Can change his own avatar
 
 - Admin users
     - Add books to the store
     - Edit books
     - Delete books
-    - Delete offensive user comments
-    - Block user from commenting
+    - Edit/Delete offensive user comments
+    - Block/Unblock user from commenting
+    - Change unappropriate user avatars
 
 ### Authors
 
