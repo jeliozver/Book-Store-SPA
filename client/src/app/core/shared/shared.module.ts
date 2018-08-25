@@ -18,6 +18,7 @@ import { IsIsbnDirective } from '../directives/is-isbn.directive';
 
 // Pipes
 import { CommentTimePipe } from '../pipes/comment-time.pipe';
+import { ShortenStringPipe } from '../pipes/shorten-string.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CommentTimePipe } from '../pipes/comment-time.pipe';
     MustMatchDirective,
     IsUrlDirective,
     IsIsbnDirective,
-    CommentTimePipe
+    CommentTimePipe,
+    ShortenStringPipe
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { CommentTimePipe } from '../pipes/comment-time.pipe';
     MustMatchDirective,
     IsUrlDirective,
     IsIsbnDirective,
-    CommentTimePipe
+    CommentTimePipe,
+    ShortenStringPipe
   ]
 })
 export class SharedModule { }
