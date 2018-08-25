@@ -135,7 +135,7 @@ module.exports = {
                     }
 
                     if (comment.user._id.toString() !== userId && !req.user.isAdmin) {
-                        return res.status(400).json({
+                        return res.status(401).json({
                             message: 'You\'re not allowed to edit other user comments!'
                         });
                     }
@@ -169,7 +169,7 @@ module.exports = {
             }
 
             if (comment.user.toString() !== userId && !req.user.isAdmin) {
-                return res.status(400).json({
+                return res.status(401).json({
                     message: 'You\'re not allowed to delete other user comments!'
                 });
             }
