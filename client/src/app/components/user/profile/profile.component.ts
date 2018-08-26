@@ -95,6 +95,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userService
       .changeAvatar(payload)
       .subscribe(() => {
+        this.avatarForm.reset();
         this.user.avatar = newAvatar;
       });
   }
