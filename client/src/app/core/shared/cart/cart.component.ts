@@ -108,7 +108,7 @@ export class CartComponent implements OnInit, OnDestroy {
       .checkout(this.cartForm.value)
       .subscribe(() => {
         this.helperService.cartStatus.next('updateStatus');
-        this.router.navigate(['/book/store/default']);
+        this.router.navigate(['/user/purchaseHistory']);
       });
   }
 
