@@ -100,6 +100,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.helperService.cartStatus.next('remove');
         this.cart.books = this.cart.books.filter(b => b._id !== this.lastDeleteId);
         this.reCalcSum(this.cartForm.value);
+        this.removeModalRef.hide();
       });
   }
 

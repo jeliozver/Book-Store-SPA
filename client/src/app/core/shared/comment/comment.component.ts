@@ -38,6 +38,7 @@ export class CommentComponent implements OnInit {
     this.commentForm = new FormGroup({
       'content': new FormControl('', Validators.required)
     });
+
     this.commentService
       .getComments(this.bookId, this.comments.length.toString())
       .subscribe((res) => {
