@@ -32,8 +32,10 @@
       <button class="btn btn-secondary" (click)="login()">Login to Buy, Rate and Comment</button>
     </ng-template>
   </div>
-  <app-comment [bookId]="bookId" [isLogged]="isLogged" [isAdmin]="isAdmin" [userId]="userId"></app-comment>
 </div>
+<ng-template [ngIf]="book">
+  <app-comment [bookId]="bookId" [isLogged]="isLogged" [isAdmin]="isAdmin" [userId]="userId"></app-comment>
+</ng-template>
 <div [hidden]="book" class="no-results">
-    <img src="https://i.imgur.com/KRVihMq.png" alt="no-item-found">
+  <img src="https://i.imgur.com/KRVihMq.png" alt="no-item-found">
 </div>
