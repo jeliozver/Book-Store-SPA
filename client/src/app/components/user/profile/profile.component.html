@@ -55,7 +55,7 @@
 <div *ngIf="user" class="favorite-books">
   <h2>Favorite Books List</h2>
   <app-book *ngFor="let book of user.favoriteBooks" [book]="book"></app-book>
-  <div [hidden]="user.favoriteBooks.length > 0">
+  <div [hidden]="user.favoriteBooks.length > 0" class="no-favorite">
     No books to the list yet
   </div>
 </div>
