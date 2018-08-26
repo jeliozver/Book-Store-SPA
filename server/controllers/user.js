@@ -166,12 +166,15 @@ module.exports = {
 
     getPurchaseHistory: (req, res) => {
         let userId = req.user.id;
-        RECEIPT.find({ user: userId }).then((receipts) => {
-            res.status(200).json({
-                message: '',
-                data: receipts
+        RECEIPT
+            .find({ user: userId })
+            .sort({ creationDate: -1 })
+            .then((receipts) => {
+                res.status(200).json({
+                    message: '',
+                    data: receipts
+                });
             });
-        });
     },
 
     changeAvatar: (req, res) => {
