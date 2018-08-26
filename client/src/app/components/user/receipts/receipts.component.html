@@ -1,3 +1,47 @@
-<p>
-  receipts works!
-</p>
+<h1>Your Purchase Histroy</h1>
+<div *ngIf="receipts">
+  <div class="card shopping-cart" *ngFor="let r of receipts; index as i">
+    <div class="card-header bg-dark text-light">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      Receipt {{i + 1}}
+      <div class="pull-right">
+        Total price: <b>{{r.totalPrice | number:'1.2-2'}}&#x24;</b>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="card-body" *ngFor="let b of r.productsInfo">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-2 text-center">
+          <img class="img-responsive" src="{{b.cover}}" alt="cover" width="100" height="150">
+        </div>
+        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+          <h4 class="product-name"><strong>{{b.title}}</strong></h4>
+          <h4>
+            <small>{{b.author}}</small>
+          </h4>
+        </div>
+        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+          <div id="book-price" class="col-3 col-sm-3 col-md-6 text-md-right">
+            <h6>
+              <strong>
+                {{b.price}} <span class="text-muted">x</span>
+              </strong>
+            </h6>
+          </div>
+          <div class="col-4 col-sm-4 col-md-4">
+            <div class="quantity">
+              <input class="qty" type="number" size="4" step="1" name="{{b._id}}" value="{{b.qty}}" disabled />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-dark">
+      <div class="pull-right">
+        <div class="pull-right">
+          Total price: <b>{{r.totalPrice | number:'1.2-2'}}&#x24;</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
