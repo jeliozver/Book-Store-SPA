@@ -62,3 +62,7 @@ h1 {
   border-radius: 0;
   background-clip: padding-box;
 }
+
+.no-receipts {
+  margin-bottom: 23.5em;
+}

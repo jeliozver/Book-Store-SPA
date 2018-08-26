@@ -45,3 +45,6 @@
     </div>
   </div>
 </div>
+<div *ngIf="!receipts || receipts.length === 0" class="no-receipts">
+  No receipts yet! You can visit the <a routerLink="/book/store/default">store</a> to buy your first book!
+</div>
