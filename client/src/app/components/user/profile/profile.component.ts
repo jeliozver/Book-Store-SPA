@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       if (username === 'mine') {
         username = this.helperService.getProfile().username;
       }
+
       this.userService
         .getProfile(username)
         .subscribe((res) => {

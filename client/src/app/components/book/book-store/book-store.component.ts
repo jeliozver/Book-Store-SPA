@@ -26,6 +26,7 @@ export class BookStoreComponent implements OnInit, OnDestroy {
   total = 30;
   maxPages = 8;
   querySub$: Subscription;
+  routeChangeSub$: Subscription;
   books: Book[];
 
   constructor(
@@ -35,19 +36,20 @@ export class BookStoreComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.currentQuery = this.route.snapshot.paramMap.get('query');
-    this.initRequest(this.currentQuery);
+    this.routeChangeSub$ = this.route.params.subscribe((params) => {
+      this.currentQuery = params.query;
+      this.initRequest(this.currentQuery);
+    });
 
     this.querySub$ = this.helperService
       .searchQuery
-      .subscribe((newQuery) => {
-        this.currentQuery = newQuery;
+      .subscribe(() => {
         this.currentPage = 1;
-        this.initRequest(this.currentQuery);
       });
   }
 
   ngOnDestroy(): void {
+    this.routeChangeSub$.unsubscribe();
     this.querySub$.unsubscribe();
   }
 

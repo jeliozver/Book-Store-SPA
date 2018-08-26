@@ -80,7 +80,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     const query: string = this.searchForm.value.query.trim();
     if (query.length !== 0) {
       this.router.navigate([`/book/store/${query}`]);
-      this.helperService.searchQuery.next(query);
+      this.helperService.searchQuery.next();
     }
   }
 
